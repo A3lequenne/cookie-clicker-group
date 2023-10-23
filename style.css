@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-image: url("https://marketplace.canva.com/EAFTQEWI-Ko/1/0/1600w/canva-black-sky-galaxy-stars-desktop-wallpaper-iWMZ0xN6KXs.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: "ArcadeClassic", sans-serif;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    color: whitesmoke;
+}
+.container 
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    
+}
+.nav{
+    width: 25%;
+    height: 100%;
+}
+.main{
+    width:50%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.score{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    padding-right: 25px;
+    padding-top: 25px;
+}
+
+#rocket{
+    font-size: 80px;
+    color: whitesmoke;
+}
+#playericon{
+    color: whitesmoke;
+    font-size: 30px;
+    padding-right: 15px;
+}
+h2{
+    padding-top: 10px;
+}
+.playericon{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid whitesmoke;
+    height: 50px;
+    border-radius: 5px;
+  
+}
+.scoreboard{
+    padding-bottom: 30px;
+}
+.store{
+    height: 30%;
+}
