@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: url("https://marketplace.canva.com/EAFTQEWI-Ko/1/0/1600w/canva-black-sky-galaxy-stars-desktop-wallpaper-iWMZ0xN6KXs.jpg");
+  background-size: 120%;
+  background-size: cover;
+  background-position: center;
+  font-family: "ArcadeClassic", sans-serif;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  color: whitesmoke;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.nav {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
+  align-items: start;
+  padding-left: 25px;
+  padding-top: 25px;
+  border-right: 2px solid whitesmoke;
+}
+.main {
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.score {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+
+  padding-top: 25px;
+  border-left: 2px solid whitesmoke;
+}
+
+#rocket {
+  font-size: 80px;
+  color: whitesmoke;
+}
+#playericon {
+  color: whitesmoke;
+  font-size: 30px;
+  padding-right: 15px;
+}
+
+.playericon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid whitesmoke;
+  height: 50px;
+  border-radius: 5px;
+  padding: 3px 15px;
+}
+.scoreboard {
+  padding-bottom: 30px;
+  text-align: center;
+}
+.store {
+}
+.btn {
+  border: 2px solid whitesmoke;
+  border-radius: 10px;
+  width: 100px;
+}
+.multi,
+.bonus,
+.auto {
+  margin-top: 25px;
+}
+.time {
+  font-size: 50px;
+}
+.playerinfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  width: 100%;
+}
+.player {
+  width: 100%;
+}
+
