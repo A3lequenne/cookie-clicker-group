@@ -56,6 +56,13 @@ body {
 #rocket {
   font-size: 80px;
   color: whitesmoke;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#rocket:hover,
+#rocket:active {
+  transform: scale(1.2);
 }
 #playericon {
   color: whitesmoke;
@@ -102,3 +109,6 @@ body {
   width: 100%;
 }
 
+#timer{
+  display: none;
+}
