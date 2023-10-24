@@ -67,15 +67,16 @@
     
   });
 
-  /*function autoClick(score) {
+  function autoClick() {
     const autoClickValue = 1;
-    
-    if (score >= priceAuto) {
-      score -= priceAuto;
-      priceAuto++;
+    let price_auto = 1;
+
+    if (score >= price_auto) {
+      score -= price_auto;
+      price_auto++;
       updateScore();
 
-      console.log("priceAuto: ", priceAuto);
+      console.log("price_auto: ", price_auto);
 
       score += autoClickValue;
       updateScore();
@@ -85,33 +86,11 @@
       autoClickSpeed -= 500;
     }
     
-    priceAuto.textContent = priceAuto;
-
-    clearInterval(autoInterval);
-    autoInterval = setInterval(autoClick, autoClickSpeed);
-  }*/
-
-  auto.addEventListener('click', () => {
-    const autoClickValue = 1;
-    
-    if (score >= parseInt(priceAuto)) {
-      score -= priceAuto;
-      priceAuto++;
-      updateScore();
-
-      console.log("priceAuto: ", priceAuto);
-
-      score += autoClickValue;
-      updateScore();
-    }
-
-    if (autoClickSpeed >= 500) {
-      autoClickSpeed -= 500;
-    }
-    
-    priceAuto.textContent = priceAuto;
+    priceAuto.textContent = price_auto + ' credits';
 
     clearInterval(autoInterval);
     autoInterval = setInterval(autoClickSpeed);
-  });
+  }
+
+  auto.addEventListener('click', autoClick());
 })();
