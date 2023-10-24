@@ -26,20 +26,20 @@
     }
   }
 
-  
   bonus.addEventListener("click", function () {
-    let bonuscredit =Math.floor(score * 0.05);
-    if(score >= bonuscredit ){
-        score-=bonuscredit;
-        pricebonus.innerText=bonuscredit;
-        updateScore();
-    if (!bonusActive) {
-      timeLeft = 30;
-      countdown();
-      bonusActive = true;
-      timer.style.display = "block";
-      bonus.disabled = true;
-    }}
+    let bonuscredit = Math.floor(score * 0.05);
+    if (score >= bonuscredit) {
+      score -= bonuscredit;
+      pricebonus.innerText = bonuscredit;
+      updateScore();
+      if (!bonusActive) {
+        timeLeft = 30;
+        countdown();
+        bonusActive = true;
+        timer.style.display = "block";
+        bonus.disabled = true;
+      }
+    }
   });
 
   let score = 0;
@@ -50,10 +50,10 @@
 
   rocket.addEventListener("click", function () {
     if (bonusActive) {
-        score += 2; 
-      } else {
-        score++;
-      }
+      score += 2;
+    } else {
+      score++;
+    }
     updateScore();
 
     if (score >= purchaseCost) {
@@ -63,9 +63,26 @@
     }
   });
 
-  multi.addEventListener('click', function(){
-    
+  let multiplier = 1;
+  rocket.addEventListener("click", function () {
+    score += 1 * multiplier;
+    updateScore();
   });
+  
+  function updateMultiplierButton() {
+    multi.innerText = `Buy Multiplier x${multiplierCounter} (Cost: ${multiplierCost})`;
+  }
+  let multiplierCost = 20;
+  function buyMultiplier() {
+    if (score >= multiplierCost && multiplier === 1) {
+      score -= multiplierCost;
+      multiplier = 2;
+
+      multi.disabled = true;
+      updateScore();
+      updateMultiplierButton();
+    }
+  }
 
   function autoClick() {
     const autoClickValue = 1;
