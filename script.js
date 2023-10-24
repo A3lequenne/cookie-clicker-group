@@ -24,14 +24,20 @@
     }
   }
 
+  
   bonus.addEventListener("click", function () {
+    let bonuscredit =Math.floor(score * 0.05);
+    if(score >= bonuscredit ){
+        score-=bonuscredit;
+        pricebonus.innerText=bonuscredit;
+        updateScore();
     if (!bonusActive) {
       timeLeft = 30;
       countdown();
       bonusActive = true;
       timer.style.display = "block";
       bonus.disabled = true;
-    }
+    }}
   });
 
   let score = 0;
@@ -54,7 +60,8 @@
       updateScore();
     }
   });
-  updateScore();
-  return score;
-  
+
+  multi.addEventListener('click', function(){
+    
+  });
 })();
