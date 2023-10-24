@@ -8,4 +8,5 @@
   let info = document.getElementById("info");
   let pricebonus = document.getElementById("pricebonus");
   let priceauto = document.getElementById("priceauto");
+  let rocket = document.getElementById('rocket');
 })();
