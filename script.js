@@ -76,21 +76,6 @@
         scoreElement.textContent = score;
     }
 
-    rocket.addEventListener("click", function () {
-        if (bonusActive) {
-        score += 2;
-        } else {
-            score++;
-        }
-        updateScore();
-
-        if (score >= purchaseCost) {
-            score -= purchaseCost;
-            score = Math.max(0, score);
-            updateScore();
-        }
-    });
-
     /*rocket.addEventListener("click", function () {
         score += 1 * multiplier;
         updateScore();
@@ -137,4 +122,19 @@
 
     bonus.addEventListener("click", bonusUpgrade);
     auto.addEventListener("click", autoClick);
+
+    rocket.addEventListener("click", function () {
+        if (bonusActive) {
+        score += 2;
+        } else {
+            score++;
+        }
+        updateScore();
+
+        if (score >= purchaseCost) {
+            score -= purchaseCost;
+            score = Math.max(0, score);
+            updateScore();
+        }
+    });
 })();
