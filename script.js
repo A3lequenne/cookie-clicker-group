@@ -11,6 +11,7 @@
   let rocket = document.getElementById("rocket");
 
   let score = 0;
+  let purchaseCost = 0;
   function updateScore() {
     scoreElement.textContent = score;
   }
