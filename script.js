@@ -106,8 +106,6 @@
             score -= price_auto;
             price_auto++;
             updateScore();
-
-            console.log("price_auto: ", price_auto);
         }
 
         if (autoClickSpeed > 500) {
