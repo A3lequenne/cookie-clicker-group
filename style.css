@@ -4,7 +4,6 @@
 }
 body {
   background-image: url("https://marketplace.canva.com/EAFTQEWI-Ko/1/0/1600w/canva-black-sky-galaxy-stars-desktop-wallpaper-iWMZ0xN6KXs.jpg");
-  
   background-size: 120%;
   background-size: cover;
   background-position: center;
@@ -102,3 +101,4 @@ body {
 .player {
   width: 100%;
 }
+
