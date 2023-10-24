@@ -7,9 +7,11 @@
   let timer = document.getElementById("timer");
   let info = document.getElementById("info");
   let pricebonus = document.getElementById("pricebonus");
-  let priceauto = document.getElementById("priceauto");
+  let priceAuto = document.getElementById("priceauto");
   let rocket = document.getElementById("rocket");
   let bonusActive = false;
+  let autoInterval;
+  let autoClickSpeed = 5000;
 
   function countdown() {
     timeLeft--;
@@ -63,5 +65,53 @@
 
   multi.addEventListener('click', function(){
     
+  });
+
+  /*function autoClick(score) {
+    const autoClickValue = 1;
+    
+    if (score >= priceAuto) {
+      score -= priceAuto;
+      priceAuto++;
+      updateScore();
+
+      console.log("priceAuto: ", priceAuto);
+
+      score += autoClickValue;
+      updateScore();
+    }
+
+    if (autoClickSpeed >= 500) {
+      autoClickSpeed -= 500;
+    }
+    
+    priceAuto.textContent = priceAuto;
+
+    clearInterval(autoInterval);
+    autoInterval = setInterval(autoClick, autoClickSpeed);
+  }*/
+
+  auto.addEventListener('click', () => {
+    const autoClickValue = 1;
+    
+    if (score >= parseInt(priceAuto)) {
+      score -= priceAuto;
+      priceAuto++;
+      updateScore();
+
+      console.log("priceAuto: ", priceAuto);
+
+      score += autoClickValue;
+      updateScore();
+    }
+
+    if (autoClickSpeed >= 500) {
+      autoClickSpeed -= 500;
+    }
+    
+    priceAuto.textContent = priceAuto;
+
+    clearInterval(autoInterval);
+    autoInterval = setInterval(autoClickSpeed);
   });
 })();
