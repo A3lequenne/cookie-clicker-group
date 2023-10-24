@@ -108,3 +108,7 @@ body {
 .player {
   width: 100%;
 }
+
+#timer{
+  display: none;
+}
