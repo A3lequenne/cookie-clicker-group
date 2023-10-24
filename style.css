@@ -102,3 +102,6 @@ body {
   width: 100%;
 }
 
+#timer{
+  display: none;
+}
