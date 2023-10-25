@@ -15,7 +15,7 @@
 
     // Bonus
     let bonusActive = false;
-
+    let bonuscredit= 20;
     // autoClick
     let autoInterval;
     let autoClickSpeed = 5000;
@@ -26,6 +26,7 @@
     let purchaseCost = 0;
     let multiplier = 1;
     let multiplierCost = 20;
+    
 
     function updateScore() {
         scoreElement.textContent = score;
@@ -123,5 +124,27 @@
     }
 
     auto.addEventListener("click", autoClick);
-
+    
+    const infoButton = document.getElementById('buttoninfo');
+    const overlay = document.getElementById('overlay');
+    const gameInfo = document.getElementById('gameInfo');
+    
+    // Add a click event listener to the button
+    infoButton.addEventListener('click', () => {
+      // Show the overlay and the hidden paragraph
+        overlay.style.display = 'block';
+        gameInfo.style.display = 'block';
+    });
+    
+    // Add a click event listener to the overlay (to close the modal)
+    overlay.addEventListener('click', () => {
+      // Hide the overlay and the hidden paragraph
+        overlay.style.display = 'none';
+        gameInfo.style.display = 'none';
+    });
+    
+    closeButton.addEventListener('click', () => {
+        gameInfo.style.display = 'none';
+        overlay.style.display = 'none';
+    });
 })();
