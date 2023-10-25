@@ -27,6 +27,10 @@
     let multiplier = 1;
     let multiplierCost = 20;
 
+    function updateScore() {
+        scoreElement.textContent = score;
+    }
+
     function countdown() {
         timeLeft--;
         document.getElementById("timer").innerText = "Bonus Time:" + timeLeft;
@@ -40,7 +44,7 @@
         }
     }
 
-    function bonusUpgrade () {
+    bonus.addEventListener("click", function () {
         let bonuscredit = Math.floor(score * 0.05);
         if (score >= bonuscredit) {
             score -= bonuscredit;
@@ -54,27 +58,23 @@
                 bonus.disabled = true;
             }
         }
-    }
+    });
 
-    /*bonus.addEventListener("click", function () {
-        let bonuscredit = Math.floor(score * 0.05);
-        if (score >= bonuscredit) {
-            score -= bonuscredit;
-            pricebonus.innerText = bonuscredit;
-            updateScore();
-            if (!bonusActive) {
-                timeLeft = 30;
-                countdown();
-                bonusActive = true;
-                timer.style.display = "block";
-                bonus.disabled = true;
-            }
+    rocket.addEventListener("click", function () {
+        
+        if (bonusActive) {
+        score += 2;
+        } else {
+            score++;
         }
-    });*/
+        updateScore();
 
-    function updateScore() {
-        scoreElement.textContent = score;
-    }
+        if (score >= purchaseCost) {
+            score -= purchaseCost;
+            score = Math.max(0, score);
+            updateScore();
+        }
+    });
 
     /*rocket.addEventListener("click", function () {
         score += 1 * multiplier;
@@ -112,27 +112,16 @@
             autoClickSpeed -= 500;
         }
 
+        if (autoClickSpeed == 500) {
+            priceAuto.textContent += `<br> Maximum auto-click speed reached`;
+        }
+
         priceAuto.textContent = price_auto + " credits";
 
         clearInterval(autoInterval);
         autoInterval = setInterval(autoIncrement, autoClickSpeed);
     }
 
-    bonus.addEventListener("click", bonusUpgrade);
     auto.addEventListener("click", autoClick);
 
-    rocket.addEventListener("click", function () {
-        if (bonusActive) {
-        score += 2;
-        } else {
-            score++;
-        }
-        updateScore();
-
-        if (score >= purchaseCost) {
-            score -= purchaseCost;
-            score = Math.max(0, score);
-            updateScore();
-        }
-    });
 })();
