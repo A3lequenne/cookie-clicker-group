@@ -9,7 +9,7 @@
   let pricebonus = document.getElementById("pricebonus");
   let priceAuto = document.getElementById("priceauto");
   let rocket = document.getElementById("rocket");
-
+  let main = document.querySelector;
   // General
   let score = 0;
   let clickValue = 1;
@@ -127,7 +127,7 @@
   const infoButton = document.getElementById("buttoninfo");
   const overlay = document.getElementById("overlay");
   const gameInfo = document.getElementById("gameInfo");
-
+  const closeButton = document.getElementById("closeButton");
   // Add a click event listener to the button
   infoButton.addEventListener("click", () => {
     // Show the overlay and the hidden paragraph
@@ -194,4 +194,31 @@
   addHighscore("Player 3", 200);
   addHighscore("Player 4", 250);
   addHighscore("Player 5", 300);
+  function createStarOutsideView() {
+    const starsContainer = document.querySelector(".stars");
+
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.left = `${Math.random() * 100}vw`;
+    star.style.top = "0vh";
+
+    const animationDuration = `${Math.random() * 3 + 2}s`;
+    star.style.animation = `moveStar ${animationDuration} linear infinite`;
+
+    star.addEventListener("animationiteration", () => {
+      starsContainer.removeChild(star);
+      createStarOutsideView();
+    });
+
+    starsContainer.appendChild(star);
+  }
+
+  function createStarsOutsideView(count) {
+    const interval = 200;
+    for (let i = 0; i < count; i++) {
+      setTimeout(createStarOutsideView, i * interval);
+    }
+  }
+
+  createStarsOutsideView(100);
 })();
