@@ -40,7 +40,7 @@
         }
         
         timeLeft--;
-        document.getElementById("timer").innerText = "Bonus Time:" + timeLeft;
+        document.getElementById("timer").innerText = "Bonus Time:" +"  "+timeLeft;
         
         if (timeLeft > 0) {
             setTimeout(countdown, 1000);
