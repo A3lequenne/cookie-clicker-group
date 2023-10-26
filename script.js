@@ -15,50 +15,25 @@
     const closeButton = document.getElementById('closeButton');
   
     // General
-    let score = 0;
-    let clickValue = 1;
+    let score;
+    let clickValue;
 
     // Bonus
-    let bonusActive = false;
-    let bonusPriceValue = 1;
-    let timeLeft = 0;
+    let bonusActive;
+    let bonusPriceValue;
+    let timeLeft;
     
     // autoClick
-    let autoPriceValue = 1;
+    let autoPriceValue;
     let autoInterval;
-    let autoClickSpeed = 5000;
-    let autoActive = false;
+    let autoClickSpeed;
+    let autoActive;
 
     // Multiplier
-    let purchaseCost = 0;
-    let multiplier = 1;
-    let multiplierCost = 1;
+    let purchaseCost;
+    let multiplier;
+    let multiplierCost;
 
-    window.addEventListener("load", () => {
-        score = parseInt(localStorage.getItem("score")) || 0;
-        clickValue = parseInt(localStorage.getItem("click")) || 1;
-        bonusActive = localStorage.getItem("bonusActive") || false;
-        bonusPriceValue = parseInt(localStorage.getItem("bonusPriceValue")) || 1;
-        timeLeft = parseInt(localStorage.getItem("timeLeft")) || 0;
-        autoPriceValue = parseInt(localStorage.getItem("autoPriceValue")) || 1;
-        autoInterval = localStorage.getItem("autoInterval") || false;
-        autoClickSpeed = parseInt(localStorage.getItem("autoClickSpeed")) || 5000;
-        autoActive = localStorage.getItem("autoActive") || false;
-        if (autoActive == true) {
-            autoInterval = setInterval(autoIncrement, autoClickSpeed);
-        }
-        purchaseCost = parseInt(localStorage.getItem("purchaseCost")) || 0;
-        multiplier = parseInt(localStorage.getItem("multiplier")) || 1;
-        multiplierCost = parseInt(localStorage.getItem("multiplierCost")) || 1;
-        updateScore();
-        updateMultiplierButton();
-        if (timeLeft > 0) {
-            bonusAfterReload();
-        }
-        price.innerText = multiplierCost  + " credits";
-        pricebonus.innerText = bonusPriceValue  + " credits";
-        priceAuto.innerText = autoPriceValue + " credits";
-    })
 
     function saveLocalStorage() {
         localStorage.setItem("score", score);
@@ -74,11 +49,21 @@
         localStorage.setItem("multiplier", multiplier);
         localStorage.setItem("multiplierCost", multiplierCost);
     }
-    
-    window.addEventListener("beforeunload", saveLocalStorage);
 
     function updateScore() {
         scoreElement.textContent = score;
+    }
+
+    function clickOnRocket() {
+        score += clickValue * multiplier;
+        //console.log(`score: ${score} \nclickValue: ${clickValue} \nmultiplier: ${multiplier} \nincrement: ${clickValue * multiplier}`);
+        updateScore();
+
+        if (score >= purchaseCost) {
+            score -= purchaseCost;
+            score = Math.max(0, score);
+            updateScore();
+        }
     }
 
     function countdown() {
@@ -122,10 +107,7 @@
         setTimeout(countdown, 1000);
         timer.style.display = "block";
         clickValue *= 2;
-        console.log(bonusActive);
     }
-
-    bonus.addEventListener("click", bonusHandler);
 
     function updateMultiplierButton() {
         if (multiplier > 1) {
@@ -172,39 +154,22 @@
         }
     }
 
-    auto.addEventListener("click", buyAutoClick);
-    multi.addEventListener("click", buyMultiplier);
-
-    rocket.addEventListener("click", function () {
-        score += clickValue * multiplier;
-        //console.log(`score: ${score} \nclickValue: ${clickValue} \nmultiplier: ${multiplier} \nincrement: ${clickValue * multiplier}`);
-        updateScore();
-
-        if (score >= purchaseCost) {
-            score -= purchaseCost;
-            score = Math.max(0, score);
-            updateScore();
-        }
-    });
-    
     // Add a click event listener to the button
-    infoButton.addEventListener('click', () => {
-      // Show the overlay and the hidden paragraph
+    function infoButtonClick() {
         overlay.style.display = 'block';
         gameInfo.style.display = 'block';
-    });
-    
+    }
+
     // Add a click event listener to the overlay (to close the modal)
-    overlay.addEventListener('click', () => {
-      // Hide the overlay and the hidden paragraph
+    function infoOverlay() {
         overlay.style.display = 'none';
         gameInfo.style.display = 'none';
-    });
-    
-    closeButton.addEventListener('click', () => {
+    }
+
+    function closeInfoPanel() {
         gameInfo.style.display = 'none';
         overlay.style.display = 'none';
-    });
+    }
 
     function resetGame() {
         score = 0;
@@ -227,5 +192,45 @@
         priceAuto.innerText = autoPriceValue + " credits";
     }
 
+    function getLocalStorage() {
+        score = parseInt(localStorage.getItem("score")) || 0;
+        clickValue = parseInt(localStorage.getItem("click")) || 1;
+        bonusActive = localStorage.getItem("bonusActive") === "true";
+        bonusPriceValue = parseInt(localStorage.getItem("bonusPriceValue")) || 1;
+        timeLeft = parseInt(localStorage.getItem("timeLeft")) || 0;
+        autoPriceValue = parseInt(localStorage.getItem("autoPriceValue")) || 1;
+        autoInterval = localStorage.getItem("autoInterval") || false;
+        autoClickSpeed = parseInt(localStorage.getItem("autoClickSpeed")) || 5000;
+        autoActive = localStorage.getItem("autoActive") || false;
+        if (autoActive == 'true') {
+            clearInterval(autoInterval);
+            autoInterval = setInterval(autoIncrement, autoClickSpeed);
+        }
+        purchaseCost = parseInt(localStorage.getItem("purchaseCost")) || 0;
+        multiplier = parseInt(localStorage.getItem("multiplier")) || 1;
+        multiplierCost = parseInt(localStorage.getItem("multiplierCost")) || 1;
+        updateScore();
+        updateMultiplierButton();
+        if (timeLeft > 0) {
+            bonusAfterReload();
+        }
+        price.innerText = multiplierCost  + " credits";
+        pricebonus.innerText = bonusPriceValue  + " credits";
+        priceAuto.innerText = autoPriceValue + " credits";
+    }
+
+    window.addEventListener("load", getLocalStorage);
+    window.addEventListener("beforeunload", saveLocalStorage);
+
+    rocket.addEventListener("click", clickOnRocket);
+
+    auto.addEventListener("click", buyAutoClick);
+    multi.addEventListener("click", buyMultiplier);
+    bonus.addEventListener("click", bonusHandler);
+
     reset.addEventListener("click", resetGame);
+
+    infoButton.addEventListener('click', infoButtonClick);
+    overlay.addEventListener('click', infoOverlay);
+    closeButton.addEventListener('click', closeInfoPanel);
 })();

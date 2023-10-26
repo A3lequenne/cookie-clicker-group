@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
 }
+
 body {
   color: #00FF7F;
   font-family: "ArcadeClassic", sans-serif;
@@ -11,6 +12,7 @@ body {
   height: 100vh;
   overflow: hidden;
 }
+
 #timer{
   color: whitesmoke;
   position: absolute;
@@ -22,11 +24,13 @@ body {
   transform: translateX(-50%);
   word-spacing: 10px;
 }
+
 .container {
   width: 100%;
   height: 100%;
   display: flex;
 }
+
 .nav {
   color: #00FF7F;
   background-color:  black;
@@ -39,6 +43,7 @@ body {
   align-items: center;
   padding-top: 25px;
 }
+
 .main {
   background-image: url("https://marketplace.canva.com/EAFTQEWI-Ko/1/0/1600w/canva-black-sky-galaxy-stars-desktop-wallpaper-iWMZ0xN6KXs.jpg");
   background-size: 120%;
@@ -52,6 +57,7 @@ body {
   justify-content: space-around;
   flex-direction: column;
 }
+
 .score {
   color: #00FF7F;
   background-color: black;
@@ -63,15 +69,18 @@ body {
 
   padding-top: 25px;
 }
+
 .logo{
   text-align: left;
   font-size: 50px;
   font-weight: 700;
 }
+
 .logo2{
   display: none;
 }
-.the,#logor {
+
+.the, #logor {
   text-shadow: 1px 1px 1px #333,
     1px 2px 1px #333,
     1px 3px 1px #333,
@@ -124,6 +133,7 @@ body {
     1px 30px 60px rgba(255, 165, 0, 0.2); /* Adjusted opacity to 0.2 */
   color: #FFA500;
 }
+
 #rocket {
   color:whitesmoke;
   font-size: 100px;
@@ -136,14 +146,17 @@ body {
 #rocket:active {
   transform: scale(1.2);
 }
+
 #playericon {
   color: #00FF7F;
   font-size: 18px;
   
 }
-  #playericonfa {
+
+#playericonfa {
     margin-right: 10px; 
   }
+
 .playericon {
   display: flex;
   align-items: center;
@@ -152,11 +165,10 @@ body {
   border-radius: 5px;
   padding: 3px 15px;
 }
+
 .scoreboard {
   padding-bottom: 30px;
   text-align: center;
-}
-.store {
 }
 
 .btn {
@@ -170,9 +182,11 @@ body {
   width: 120px;
   margin: 10px;
 }
+
 .price, .pricebonus, .priceauto{
   font-size: 20px;
 }
+
 .multi,
 .bonus,
 .auto {
@@ -180,14 +194,17 @@ body {
   cursor: pointer;
   transition: all 0.2s;
 }
+
 .multi:hover,
 .bonus:hover,
 .auto:hover{
   transform: scale(1.2);
 }
+
 .time {
   font-size: 50px;
 }
+
 .playerinfo {
   display: flex;
   align-items: center;
@@ -195,6 +212,7 @@ body {
 
   width: 100%;
 }
+
 .player {
   width: 100%;
 }
@@ -202,6 +220,7 @@ body {
 #timer{
   display: none;
 }
+
 .overlay {
   display: none;
   position: fixed;
@@ -220,6 +239,7 @@ body {
   justify-content: space-around;
   width: 100%;
 }
+
 .hidden-paragraph {
   display: none;
   background-color: rgba(255, 255, 255, 0.8);
@@ -234,6 +254,7 @@ body {
   color: black;
   word-spacing: 4px; 
 }
+
 .close-button {
   position: absolute;
   top: 10px;
@@ -246,11 +267,13 @@ body {
   * {
     overflow: hidden;
   }
+  
   body {
     width: 100vw;
     overflow: hidden;
     height: 100vh;
   }
+  
   .container {
     display: flex;
     flex-direction: column-reverse;
@@ -299,6 +322,7 @@ body {
   .h1store {
     display: none;
   }
+  
   .scoreboard {
     margin-top: auto;
   }
@@ -309,41 +333,51 @@ body {
     width: 100%;
     height: 50%;
   }
+  
   .player {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+  
   .scoreboard {
     display: none;
     margin: 0;
   }
+  
   .pointsh2 {
     padding-right: 30px;
   }
+  
   .playerinfo {
     
     padding-left: 25px;
   }
-.logo{
-  display: none;
-}
-.logo2{
-  display: block;
-  font-size: 40px;
-}
-#timer{
-  width: 100%;
-  font-size: 30px;
-  top: 33%;
-  left: 50%;
-  transform: translateX(-50%);
 
-}
-#rocket{
-  margin-top: 25px;
-  font-size: 80px;
-}
-.price, .pricebonus, .priceauto{
-  font-size: 16px;
+  .logo {
+  display: none;
+  }
+
+  .logo2 {
+    display: block;
+    font-size: 40px;
+  }
+
+  #timer {
+    width: 100%;
+    font-size: 30px;
+    top: 33%;
+    left: 50%;
+    transform: translateX(-50%);
+
+  }
+
+  #rocket {
+    margin-top: 25px;
+    font-size: 80px;
+  }
+
+  .price, .pricebonus, .priceauto {
+    font-size: 16px;
+  }
 }
