@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="Embark on an interstellar adventure with our spaceship clicker game. Click, upgrade, and conquer the universe in this thrilling and addictive gaming experience. Blast off into a world of endless possibilities - play now and become the ultimate space explorer!">
+    <meta name="description" content="Embark on an interstellar adventure with
+    our spaceship clicker game. Click, upgrade, and conquer the universe in this
+    thrilling and addictive gaming experience. Blast off into a world of endless
+    possibilities - play now and become the ultimate space explorer!" / />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
@@ -19,6 +22,8 @@
     <title>Cookie Clicker</title>
   </head>
   <body>
+    <div class="stars"></div>
+    <div class="stars2"></div>
     <div class="container" id="container">
       <div class="nav" id="nav">
         <div class="info" id="info">
@@ -28,43 +33,68 @@
           <div class="buttonreset" id="buttonreset">
             <h1 class="h1reset" id="h1reset">reset</h1>
           </div>
-         
+
           <div class="overlay" id="overlay"></div>
           <p class="hidden-paragraph" id="gameInfo">
-            Welcome to the exciting world of Cookie (Spaceship) Clicker! 
-            <br><br>
-            In this addictive and fun-filled game, your mission is to embark on a thrilling journey through the cosmos while clicking your way to victory. Let's dive into the key features of this captivating game:
-            <br><br>
-            - Cookie Clicking Adventure: Your journey begins with a single spaceship-shaped cookie. Click on it to collect points, and use your skill and perseverance to navigate through the vast universe of delicious cookies.
-            <br><br>
-            - Multiplier Button: Need a boost in your cookie collection journey? The Multiplier Button is your go-to solution. With this feature, you can multiply your score every time you click it. It's a fantastic bonus that can significantly accelerate your progress, and it's available for purchase using credits earned from your cookie score.
-            <br><br>
-            - Bonus Button: Double your cookie-clicking excitement with the Bonus Button! For 30 seconds, every click you make is magically doubled, allowing you to accumulate cookies at an even faster rate. Strategically time your use of this bonus to maximize your rewards.
-            <br><br>
-            - Auto-Click Button: Tired of clicking manually? The Auto-Click Button is here to assist you. Activate it, and your spaceship will automatically click on cookies for you, providing you with a constant stream of points while you sit back and watch your score soar.
-            Are you ready to embark on an intergalactic journey filled with cookies, spaceships, and endless fun? Join the Cookie (Spaceship) Clicker community and become the ultimate space cookie collector! May the cosmic cookie force be with you as you click your way to victory!
-            <span class="close-button" id="closeButton">&times;</span> <!-- The "X" button -->
-
+            Welcome to the exciting world of Cookie (Spaceship) Clicker!
+            <br /><br />
+            In this addictive and fun-filled game, your mission is to embark on
+            a thrilling journey through the cosmos while clicking your way to
+            victory. Let's dive into the key features of this captivating game:
+            <br /><br />
+            - Cookie Clicking Adventure: Your journey begins with a single
+            spaceship-shaped cookie. Click on it to collect points, and use your
+            skill and perseverance to navigate through the vast universe of
+            delicious cookies.
+            <br /><br />
+            - Multiplier Button: Need a boost in your cookie collection journey?
+            The Multiplier Button is your go-to solution. With this feature, you
+            can multiply your score every time you click it. It's a fantastic
+            bonus that can significantly accelerate your progress, and it's
+            available for purchase using credits earned from your cookie score.
+            <br /><br />
+            - Bonus Button: Double your cookie-clicking excitement with the
+            Bonus Button! For 30 seconds, every click you make is magically
+            doubled, allowing you to accumulate cookies at an even faster rate.
+            Strategically time your use of this bonus to maximize your rewards.
+            <br /><br />
+            - Auto-Click Button: Tired of clicking manually? The Auto-Click
+            Button is here to assist you. Activate it, and your spaceship will
+            automatically click on cookies for you, providing you with a
+            constant stream of points while you sit back and watch your score
+            soar. Are you ready to embark on an intergalactic journey filled
+            with cookies, spaceships, and endless fun? Join the Cookie
+            (Spaceship) Clicker community and become the ultimate space cookie
+            collector! May the cosmic cookie force be with you as you click your
+            way to victory!
+            <span class="close-button" id="closeButton">&times;</span>
+            <!-- The "X" button -->
           </p>
         </div>
-        <span class="logo" id="logo"><p class="the">The</p><p class="Space">Sp<i id="logor" class="fa-brands fa-space-awesome"></i>ceship</p><p class="clicker">Clicker</p></span>
+        <span class="logo" id="logo"
+          ><p class="the">The</p>
+          <p class="Space">
+            Sp<i id="logor" class="fa-brands fa-space-awesome"></i>ceship
+          </p>
+          <p class="clicker">Clicker</p></span
+        >
         <div class="store" id="store">
           <h1 class="h1store">store</h1>
           <div class="upgrades" id="upgrades"></div>
           <div class="multi">
-            <p class="btn" id="multi">Multiplier</p>
+            <p class="btn" id="multi" disabled>Multiplier</p>
             <div class="price">
               <p id="price">1 credits</p>
             </div>
           </div>
           <div class="bonus">
-            <p class="btn" id="bonus">Bonus</p>
+            <p class="btn" id="bonus" disabled>Bonus</p>
             <div class="pricebonus">
               <p id="pricebonus">1 credits</p>
             </div>
           </div>
           <div class="auto">
-            <p class="btn" id="auto">Auto-click</p>
+            <p class="btn" id="auto" disabled>Auto-click</p>
             <div class="priceauto">
               <p id="priceauto">1 credits</p>
             </div>
@@ -88,11 +118,32 @@
             </div>
             <div class="points" id="points">
               <h2 class="pointsh2" id="pointsh2">0</h2>
-              
             </div>
           </div>
         </div>
-        <span class="logo2" id="logo"><p class="the">The</p><p class="Space">Sp<i id="logor" class="fa-brands fa-space-awesome"></i>ceship</p><p class="clicker">Clicker</p></span>
+        <div class="leaderboard" id="leaderboard">
+          <h2>Leaderboard</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Player</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Highscores will be dynamically inserted here using JavaScript -->
+            </tbody>
+          </table>
+        </div>
+        <span class="logo2" id="logo">
+          <p class="the">The</p>
+
+          <p class="Space">
+            Sp<i id="logor" class="fa-brands fa-space-awesome"></i>ceship
+          </p>
+
+          <p class="clicker">Clicker</p></span>
       </div>
     </div>
     <script src="script.js"></script>

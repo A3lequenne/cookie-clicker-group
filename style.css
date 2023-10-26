@@ -4,16 +4,44 @@
 }
 
 body {
-  color: #00FF7F;
+  color: #00ff7f;
   font-family: "ArcadeClassic", sans-serif;
   width: 100vw;
   margin: 0;
   padding: 0;
   height: 100vh;
   overflow: hidden;
+  background-color: black;
 }
 
-#timer{
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  width: 2px;
+  height: 2px;
+  animation: moveStar 5s linear infinite;
+}
+
+@keyframes moveStar {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+#timer {
   color: whitesmoke;
   position: absolute;
   padding: 0;
@@ -29,11 +57,13 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
+  background-color: black;
+  margin: 0;
 }
 
 .nav {
-  color: #00FF7F;
-  background-color:  black;
+  color: #00ff7f;
+  background-color: black;
   width: 25%;
   height: 100%;
   display: flex;
@@ -45,10 +75,7 @@ body {
 }
 
 .main {
-  background-image: url("https://marketplace.canva.com/EAFTQEWI-Ko/1/0/1600w/canva-black-sky-galaxy-stars-desktop-wallpaper-iWMZ0xN6KXs.jpg");
-  background-size: 120%;
-  background-size: cover;
-  background-position: center;
+ 
   width: 50%;
   height: 100%;
   text-align: center;
@@ -59,7 +86,7 @@ body {
 }
 
 .score {
-  color: #00FF7F;
+  color: #00ff7f;
   background-color: black;
   width: 25%;
   height: 100%;
@@ -69,73 +96,50 @@ body {
 
   padding-top: 25px;
 }
-
-.logo{
+.logo {
   text-align: left;
   font-size: 50px;
   font-weight: 700;
 }
-
-.logo2{
+.logo2 {
   display: none;
 }
-
-.the, #logor {
-  text-shadow: 1px 1px 1px #333,
-    1px 2px 1px #333,
-    1px 3px 1px #333,
-    1px 4px 1px #333,
-    1px 5px 1px #333,
-    1px 6px 1px #333,
-    1px 7px 1px #333,
-    1px 8px 1px #333,
-    1px 9px 1px #333,
-    1px 10px 1px #333,
-    1px 18px 6px rgba(255, 255, 255, 0.2), /* Using the adjusted opacity */
-    1px 22px 10px rgba(253, 252, 252, 0.1), /* Using the adjusted opacity */
-    1px 25px 35px rgba(255, 255, 255, 0.1), /* Using the adjusted opacity */
-    1px 30px 60px rgba(252, 252, 252, 0.2); /* Using the adjusted opacity */
+.the,
+#logor {
+  text-shadow: 1px 1px 1px #333, 1px 2px 1px #333, 1px 3px 1px #333,
+    1px 4px 1px #333, 1px 5px 1px #333, 1px 6px 1px #333, 1px 7px 1px #333,
+    1px 8px 1px #333, 1px 9px 1px #333, 1px 10px 1px #333,
+    1px 18px 6px rgba(255, 255, 255, 0.2),
+    /* Using the adjusted opacity */ 1px 22px 10px rgba(253, 252, 252, 0.1),
+    /* Using the adjusted opacity */ 1px 25px 35px rgba(255, 255, 255, 0.1),
+    /* Using the adjusted opacity */ 1px 30px 60px rgba(252, 252, 252, 0.2); /* Using the adjusted opacity */
   color: whitesmoke;
 }
 
 .Space {
-  text-shadow: 1px 1px 1px #333,
-    1px 2px 1px #333,
-    1px 3px 1px #333,
-    1px 4px 1px #333,
-    1px 5px 1px #333,
-    1px 6px 1px #333,
-    1px 7px 1px #333,
-    1px 8px 1px #333,
-    1px 9px 1px #333,
-    1px 10px 1px #333,
-    1px 18px 6px rgba(0, 255, 127, 0.2), /* Adjusted opacity to 0.2 */
-    1px 22px 10px rgba(0, 255, 127, 0.1), /* Adjusted opacity to 0.1 */
-    1px 25px 35px rgba(0, 255, 127, 0.1), /* Adjusted opacity to 0.1 */
-    1px 30px 60px rgba(0, 255, 127, 0.2); /* Adjusted opacity to 0.2 */
-  color: #00FF7F;
+  text-shadow: 1px 1px 1px #333, 1px 2px 1px #333, 1px 3px 1px #333,
+    1px 4px 1px #333, 1px 5px 1px #333, 1px 6px 1px #333, 1px 7px 1px #333,
+    1px 8px 1px #333, 1px 9px 1px #333, 1px 10px 1px #333,
+    1px 18px 6px rgba(0, 255, 127, 0.2),
+    /* Adjusted opacity to 0.2 */ 1px 22px 10px rgba(0, 255, 127, 0.1),
+    /* Adjusted opacity to 0.1 */ 1px 25px 35px rgba(0, 255, 127, 0.1),
+    /* Adjusted opacity to 0.1 */ 1px 30px 60px rgba(0, 255, 127, 0.2); /* Adjusted opacity to 0.2 */
+  color: #00ff7f;
 }
 
 .clicker {
-  text-shadow: 1px 1px 1px #333,
-    1px 2px 1px #333,
-    1px 3px 1px #333,
-    1px 4px 1px #333,
-    1px 5px 1px #333,
-    1px 6px 1px #333,
-    1px 7px 1px #333,
-    1px 8px 1px #333,
-    1px 9px 1px #333,
-    1px 10px 1px #333,
-    1px 18px 6px rgba(255, 165, 0, 0.2), /* Adjusted opacity to 0.2 */
-    1px 22px 10px rgba(255, 165, 0, 0.1), /* Adjusted opacity to 0.1 */
-    1px 25px 35px rgba(255, 165, 0, 0.1), /* Adjusted opacity to 0.1 */
-    1px 30px 60px rgba(255, 165, 0, 0.2); /* Adjusted opacity to 0.2 */
-  color: #FFA500;
+  text-shadow: 1px 1px 1px #333, 1px 2px 1px #333, 1px 3px 1px #333,
+    1px 4px 1px #333, 1px 5px 1px #333, 1px 6px 1px #333, 1px 7px 1px #333,
+    1px 8px 1px #333, 1px 9px 1px #333, 1px 10px 1px #333,
+    1px 18px 6px rgba(255, 165, 0, 0.2),
+    /* Adjusted opacity to 0.2 */ 1px 22px 10px rgba(255, 165, 0, 0.1),
+    /* Adjusted opacity to 0.1 */ 1px 25px 35px rgba(255, 165, 0, 0.1),
+    /* Adjusted opacity to 0.1 */ 1px 30px 60px rgba(255, 165, 0, 0.2); /* Adjusted opacity to 0.2 */
+  color: #ffa500;
 }
 
 #rocket {
-  color:whitesmoke;
+  color: whitesmoke;
   font-size: 100px;
   cursor: pointer;
   transition: all 0.2s;
@@ -148,15 +152,12 @@ body {
 }
 
 #playericon {
-  color: #00FF7F;
+  color: #00ff7f;
   font-size: 18px;
-  
 }
-
 #playericonfa {
-    margin-right: 10px; 
-  }
-
+  margin-right: 10px;
+}
 .playericon {
   display: flex;
   align-items: center;
@@ -174,16 +175,17 @@ body {
 .btn {
   text-align: center;
   font-size: 22px;
-  color: #001F3F;
-  background-color: #FFA500;
-  border: 2px solid #001F3F;
+  color: #001f3f;
+  background-color: #ffa500;
+  border: 2px solid #001f3f;
   padding: 5px 30px;
   border-radius: 10px;
   width: 120px;
   margin: 10px;
 }
-
-.price, .pricebonus, .priceauto{
+.price,
+.pricebonus,
+.priceauto {
   font-size: 20px;
 }
 
@@ -197,7 +199,7 @@ body {
 
 .multi:hover,
 .bonus:hover,
-.auto:hover{
+.auto:hover {
   transform: scale(1.2);
 }
 
@@ -217,7 +219,7 @@ body {
   width: 100%;
 }
 
-#timer{
+#timer {
   display: none;
 }
 
@@ -228,11 +230,11 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7); 
-  z-index: 999; 
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
 }
 
-.info{
+.info {
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
@@ -252,7 +254,7 @@ body {
   transform: translate(-50%, -50%);
   z-index: 1000;
   color: black;
-  word-spacing: 4px; 
+  word-spacing: 4px;
 }
 
 .close-button {
@@ -261,6 +263,11 @@ body {
   right: 10px;
   font-size: 20px;
   cursor: pointer;
+}
+.btn:disabled {
+  background-color: black;
+  color: gray;
+  cursor: not-allowed;
 }
 
 @media (max-width: 768px) {
@@ -277,7 +284,6 @@ body {
   .container {
     display: flex;
     flex-direction: column-reverse;
-
   }
 
   .score {
@@ -350,34 +356,34 @@ body {
   }
   
   .playerinfo {
-    
     padding-left: 25px;
   }
-
   .logo {
-  display: none;
+    display: none;
   }
-
   .logo2 {
     display: block;
     font-size: 40px;
   }
-
   #timer {
     width: 100%;
     font-size: 30px;
     top: 33%;
     left: 50%;
     transform: translateX(-50%);
-
   }
-
   #rocket {
     margin-top: 25px;
     font-size: 80px;
   }
-
-  .price, .pricebonus, .priceauto {
+  .price,
+  .pricebonus,
+  .priceauto {
     font-size: 16px;
   }
+}
+.btn:disabled {
+  background-color: black;
+  color: gray;
+  cursor: not-allowed;
 }

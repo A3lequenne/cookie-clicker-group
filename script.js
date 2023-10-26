@@ -130,10 +130,10 @@
         }
     }
 
-    function autoIncrement() {
-        score += clickValue * multiplier;
-        updateScore();
-    }
+  function autoIncrement() {
+    score += clickValue * multiplier;
+    updateScore();
+  }
 
     function buyAutoClick() {        
         if (autoClickSpeed > 500) {
@@ -146,8 +146,126 @@
             autoClickSpeed -= 500;
         }
 
-        priceAuto.innerText = autoPriceValue + " credits";
+    priceAuto.innerText = autoPriceValue + " credits";
 
+    if (autoActive == true) {
+      clearInterval(autoInterval);
+      autoInterval = setInterval(autoIncrement, autoClickSpeed);
+    }
+  }
+
+  auto.addEventListener("click", buyAutoClick);
+  multi.addEventListener("click", buyMultiplier);
+
+  rocket.addEventListener("click", function () {
+    score += clickValue * multiplier;
+    //console.log(`score: ${score} \nclickValue: ${clickValue} \nmultiplier: ${multiplier} \nincrement: ${clickValue * multiplier}`);
+    updateScore();
+
+    if (score >= purchaseCost) {
+      score -= purchaseCost;
+      score = Math.max(0, score);
+      updateScore();
+    }
+  });
+
+  const infoButton = document.getElementById("buttoninfo");
+  const overlay = document.getElementById("overlay");
+  const gameInfo = document.getElementById("gameInfo");
+  const closeButton = document.getElementById("closeButton");
+  // Add a click event listener to the button
+  infoButton.addEventListener("click", () => {
+    // Show the overlay and the hidden paragraph
+    overlay.style.display = "block";
+    gameInfo.style.display = "block";
+  });
+
+  // Add a click event listener to the overlay (to close the modal)
+  overlay.addEventListener("click", () => {
+    // Hide the overlay and the hidden paragraph
+    overlay.style.display = "none";
+    gameInfo.style.display = "none";
+  });
+
+  closeButton.addEventListener("click", () => {
+    gameInfo.style.display = "none";
+    overlay.style.display = "none";
+  });
+
+  /*
+    function updateButtonStates(bonus, multi, auto) {
+      if (score >= bonusPriceValue) {
+        bonus.removeAttribute("disabled");
+      } else {
+        bonus.setAttribute("disabled", "disabled");
+      }
+
+      if (score >= multiplierCost) {
+        multi.removeAttribute("disabled");
+      } else {
+        multi.setAttribute("disabled", "disabled");
+      }
+
+      if (score >= autoPriceValue) {
+        auto.removeAttribute("disabled");
+      } else {
+        auto.setAttribute("disabled", "disabled");
+      }
+    }
+
+    updateButtonStates(bonus, multi, auto);
+  };
+*/
+  function addHighscore(playerName, score) {
+    const newRow = document.createElement("tr");
+
+    const rankCell = document.createElement("td");
+    const playerCell = document.createElement("td");
+    const scoreCell = document.createElement("td");
+
+    rankCell.textContent = "1";
+    playerCell.textContent = playerName;
+    scoreCell.textContent = score;
+
+    newRow.appendChild(rankCell);
+    newRow.appendChild(playerCell);
+    newRow.appendChild(scoreCell);
+
+    const leaderboardTable = document.querySelector("#leaderboard table tbody");
+    leaderboardTable.appendChild(newRow);
+  }
+  addHighscore("Player 1", 100);
+  addHighscore("Player 2", 150);
+  addHighscore("Player 3", 200);
+  addHighscore("Player 4", 250);
+  addHighscore("Player 5", 300);
+  function createStarOutsideView() {
+    const starsContainer = document.querySelector(".stars");
+
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.left = `${Math.random() * 100}vw`;
+    star.style.top = "0vh";
+
+    const animationDuration = `${Math.random() * 3 + 2}s`;
+    star.style.animation = `moveStar ${animationDuration} linear infinite`;
+
+    star.addEventListener("animationiteration", () => {
+      starsContainer.removeChild(star);
+      createStarOutsideView();
+    });
+
+    starsContainer.appendChild(star);
+  }
+
+  function createStarsOutsideView(count) {
+    const interval = 200;
+    for (let i = 0; i < count; i++) {
+      setTimeout(createStarOutsideView, i * interval);
+    }
+  }
+
+  createStarsOutsideView(100);
         if (autoActive == true) {
             clearInterval(autoInterval);
             autoInterval = setInterval(autoIncrement, autoClickSpeed);
