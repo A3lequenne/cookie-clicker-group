@@ -5,10 +5,14 @@
     let auto = document.getElementById("auto");
     let price = document.getElementById("price");
     let timer = document.getElementById("timer");
-    let info = document.getElementById("info");
     let pricebonus = document.getElementById("pricebonus");
     let priceAuto = document.getElementById("priceauto");
     let rocket = document.getElementById("rocket");
+    const infoButton = document.getElementById('buttoninfo');
+    const reset = document.getElementById("buttonreset");
+    const overlay = document.getElementById('overlay');
+    const gameInfo = document.getElementById('gameInfo');
+    const closeButton = document.getElementById('closeButton');
   
     // General
     let score = 0;
@@ -17,6 +21,7 @@
     // Bonus
     let bonusActive = false;
     let bonusPriceValue = 1;
+    let timeLeft = 0;
     
     // autoClick
     let autoPriceValue = 1;
@@ -28,7 +33,49 @@
     let purchaseCost = 0;
     let multiplier = 1;
     let multiplierCost = 1;
+
+    window.addEventListener("load", () => {
+        score = parseInt(localStorage.getItem("score")) || 0;
+        clickValue = parseInt(localStorage.getItem("click")) || 1;
+        bonusActive = localStorage.getItem("bonusActive") || false;
+        bonusPriceValue = parseInt(localStorage.getItem("bonusPriceValue")) || 1;
+        timeLeft = parseInt(localStorage.getItem("timeLeft")) || 0;
+        autoPriceValue = parseInt(localStorage.getItem("autoPriceValue")) || 1;
+        autoInterval = localStorage.getItem("autoInterval") || false;
+        autoClickSpeed = parseInt(localStorage.getItem("autoClickSpeed")) || 5000;
+        autoActive = localStorage.getItem("autoActive") || false;
+        if (autoActive == true) {
+            autoInterval = setInterval(autoIncrement, autoClickSpeed);
+        }
+        purchaseCost = parseInt(localStorage.getItem("purchaseCost")) || 0;
+        multiplier = parseInt(localStorage.getItem("multiplier")) || 1;
+        multiplierCost = parseInt(localStorage.getItem("multiplierCost")) || 1;
+        updateScore();
+        updateMultiplierButton();
+        if (timeLeft > 0) {
+            bonusAfterReload();
+        }
+        price.innerText = multiplierCost  + " credits";
+        pricebonus.innerText = bonusPriceValue  + " credits";
+        priceAuto.innerText = autoPriceValue + " credits";
+    })
+
+    function saveLocalStorage() {
+        localStorage.setItem("score", score);
+        localStorage.setItem("clickValue", clickValue);
+        localStorage.setItem("bonusActive", bonusActive);
+        localStorage.setItem("bonusPriceValue", bonusPriceValue);
+        localStorage.setItem("autoPriceValue", autoPriceValue);
+        localStorage.setItem("timeLeft", timeLeft);
+        localStorage.setItem("autoInterval", autoInterval);
+        localStorage.setItem("autoClickSpeed", autoClickSpeed);
+        localStorage.setItem("autoActive", autoActive);
+        localStorage.setItem("purchageCost", purchaseCost);
+        localStorage.setItem("multiplier", multiplier);
+        localStorage.setItem("multiplierCost", multiplierCost);
+    }
     
+    window.addEventListener("beforeunload", saveLocalStorage);
 
     function updateScore() {
         scoreElement.textContent = score;
@@ -40,7 +87,7 @@
         }
         
         timeLeft--;
-        document.getElementById("timer").innerText = "Bonus Time:" +"  "+timeLeft;
+        document.getElementById("timer").innerText = "Bonus Time:" + "  " + timeLeft;
         
         if (timeLeft > 0) {
             setTimeout(countdown, 1000);
@@ -48,11 +95,13 @@
             bonusActive = false;
             timer.style.display = "none";
             bonus.disabled = false;
-            clickValue /= 2;
+            if (clickValue > 1) {
+                clickValue /= 2;
+            }
         }
     }
 
-    bonus.addEventListener("click", function () {
+    function bonusHandler() {
         if (!bonusActive) {
             if (score >= bonusPriceValue) {
                 score -= bonusPriceValue;
@@ -61,16 +110,30 @@
                 updateScore();
 
                 timeLeft = 30;
-                countdown();
+                countdown(30);
                 bonusActive = true;
                 timer.style.display = "block";
                 bonus.disabled = true;
             }
         }
-    });
+    }
+
+    function bonusAfterReload() {
+        setTimeout(countdown, 1000);
+        timer.style.display = "block";
+        clickValue *= 2;
+        console.log(bonusActive);
+    }
+
+    bonus.addEventListener("click", bonusHandler);
 
     function updateMultiplierButton() {
-        multi.innerText = `Multiplier x${multiplier}`;
+        if (multiplier > 1) {
+            multi.innerText = `Multiplier x${multiplier}`;
+        }
+        else {
+            multi.innerText = `Multiplier`;
+        }
     }
     
     function buyMultiplier() {
@@ -91,7 +154,7 @@
     }
 
     function buyAutoClick() {        
-        if (autoClickSpeed > 2500) {
+        if (autoClickSpeed > 500) {
             if (score >= autoPriceValue && score != 0) {
                 score -= autoPriceValue;
                 autoPriceValue *= 2;
@@ -124,10 +187,6 @@
         }
     });
     
-    const infoButton = document.getElementById('buttoninfo');
-    const overlay = document.getElementById('overlay');
-    const gameInfo = document.getElementById('gameInfo');
-    
     // Add a click event listener to the button
     infoButton.addEventListener('click', () => {
       // Show the overlay and the hidden paragraph
@@ -146,4 +205,27 @@
         gameInfo.style.display = 'none';
         overlay.style.display = 'none';
     });
+
+    function resetGame() {
+        score = 0;
+        clickValue = 1;
+        bonusActive = false;
+        bonusPriceValue = 1;
+        timeLeft = 0;
+        autoPriceValue = 1;
+        clearInterval(autoInterval);
+        autoInterval = false;
+        autoClickSpeed = 5000;
+        autoActive = false;
+        purchaseCost = 0;
+        multiplier = 1;
+        multiplierCost = 1;
+        updateScore();
+        updateMultiplierButton();
+        price.innerText = multiplierCost  + " credits";
+        pricebonus.innerText = bonusPriceValue  + " credits";
+        priceAuto.innerText = autoPriceValue + " credits";
+    }
+
+    reset.addEventListener("click", resetGame);
 })();
