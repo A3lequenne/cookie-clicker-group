@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta
-      name="description"
-      content="Embark on an interstellar adventure with our spaceship clicker game. Click, upgrade, and conquer the universe in this thrilling and addictive gaming experience. Blast off into a world of endless possibilities - play now and become the ultimate space explorer!"
-    />
+    <meta name="description" content="Embark on an interstellar adventure with
+    our spaceship clicker game. Click, upgrade, and conquer the universe in this
+    thrilling and addictive gaming experience. Blast off into a world of endless
+    possibilities - play now and become the ultimate space explorer!" / />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
@@ -23,9 +23,8 @@
   </head>
   <body>
     <div class="stars"></div>
-        <div class="stars2"></div>
+    <div class="stars2"></div>
     <div class="container" id="container">
-     
       <div class="nav" id="nav">
         <div class="info" id="info">
           <div class="buttoninfo" id="buttoninfo">
@@ -80,19 +79,19 @@
           <h1 class="h1store">store</h1>
           <div class="upgrades" id="upgrades"></div>
           <div class="multi">
-            <p class="btn" id="multi">Multiplier</p>
+            <p class="btn" id="multi" disabled>Multiplier</p>
             <div class="price">
               <p id="price">1 credits</p>
             </div>
           </div>
           <div class="bonus">
-            <p class="btn" id="bonus">Bonus</p>
+            <p class="btn" id="bonus" disabled>Bonus</p>
             <div class="pricebonus">
               <p id="pricebonus">1 credits</p>
             </div>
           </div>
           <div class="auto">
-            <p class="btn" id="auto">Auto-click</p>
+            <p class="btn" id="auto" disabled>Auto-click</p>
             <div class="priceauto">
               <p id="priceauto">1 credits</p>
             </div>
@@ -101,7 +100,6 @@
         <div></div>
       </div>
       <div class="main" id="main">
-        
         <div class="time" id="timer">0</div>
         <i id="rocket" class="fa-brands fa-space-awesome"></i>
       </div>
@@ -120,11 +118,28 @@
             </div>
           </div>
         </div>
+        <div class="leaderboard" id="leaderboard">
+          <h2>Leaderboard</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Player</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Highscores will be dynamically inserted here using JavaScript -->
+            </tbody>
+          </table>
+        </div>
         <span class="logo2" id="logo"
           ><p class="the">The</p>
+
           <p class="Space">
             Sp<i id="logor" class="fa-brands fa-space-awesome"></i>ceship
           </p>
+
           <p class="clicker">Clicker</p></span
         >
       </div>

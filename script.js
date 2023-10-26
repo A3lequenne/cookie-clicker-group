@@ -1,176 +1,224 @@
 (() => {
-    let scoreElement = document.getElementById("pointsh2");
-    let multi = document.getElementById("multi");
-    let bonus = document.getElementById("bonus");
-    let auto = document.getElementById("auto");
-    let price = document.getElementById("price");
-    let timer = document.getElementById("timer");
-    let info = document.getElementById("info");
-    let pricebonus = document.getElementById("pricebonus");
-    let priceAuto = document.getElementById("priceauto");
-    let rocket = document.getElementById("rocket");
-    let main = document.querySelector
-    // General
-    let score = 0;
-    let clickValue = 1;
+  let scoreElement = document.getElementById("pointsh2");
+  let multi = document.getElementById("multi");
+  let bonus = document.getElementById("bonus");
+  let auto = document.getElementById("auto");
+  let price = document.getElementById("price");
+  let timer = document.getElementById("timer");
+  let info = document.getElementById("info");
+  let pricebonus = document.getElementById("pricebonus");
+  let priceAuto = document.getElementById("priceauto");
+  let rocket = document.getElementById("rocket");
+  let main = document.querySelector;
+  // General
+  let score = 0;
+  let clickValue = 1;
 
-    // Bonus
-    let bonusActive = false;
-    let bonusPriceValue = 1;
-    
-    // autoClick
-    let autoPriceValue = 1;
-    let autoInterval;
-    let autoClickSpeed = 5000;
-    let autoActive = false;
+  // Bonus
+  let bonusActive = false;
+  let bonusPriceValue = 20;
 
-    // Multiplier
-    let purchaseCost = 0;
-    let multiplier = 1;
-    let multiplierCost = 1;
-    
+  // autoClick
+  let autoPriceValue = 20;
+  let autoInterval;
+  let autoClickSpeed = 5000;
+  let autoActive = false;
 
-    function updateScore() {
-        scoreElement.textContent = score;
+  // Multiplier
+  let purchaseCost = 0;
+  let multiplier = 1;
+  let multiplierCost = 20;
+
+  function updateScore() {
+    scoreElement.textContent = score;
+  }
+
+  function countdown() {
+    if (timeLeft == 30) {
+      clickValue = clickValue * 2;
     }
 
-    function countdown() {
-        if (timeLeft == 30) {
-            clickValue = clickValue * 2;
-        }
-        
-        timeLeft--;
-        document.getElementById("timer").innerText = "Bonus Time:" +"  "+timeLeft;
-        
-        if (timeLeft > 0) {
-            setTimeout(countdown, 1000);
-        } else {
-            bonusActive = false;
-            timer.style.display = "none";
-            bonus.disabled = false;
-            clickValue /= 2;
-        }
+    timeLeft--;
+    document.getElementById("timer").innerText =
+      "Bonus Time:" + "  " + timeLeft;
+
+    if (timeLeft > 0) {
+      setTimeout(countdown, 1000);
+    } else {
+      bonusActive = false;
+      timer.style.display = "none";
+      bonus.disabled = false;
+      clickValue /= 2;
     }
+  }
 
-    bonus.addEventListener("click", function () {
-        if (!bonusActive) {
-            if (score >= bonusPriceValue) {
-                score -= bonusPriceValue;
-                bonusPriceValue *= 2;
-                pricebonus.innerText = bonusPriceValue  + " credits";
-                updateScore();
-
-                timeLeft = 30;
-                countdown();
-                bonusActive = true;
-                timer.style.display = "block";
-                bonus.disabled = true;
-            }
-        }
-    });
-
-    function updateMultiplierButton() {
-        multi.innerText = `Multiplier x${multiplier}`;
-    }
-    
-    function buyMultiplier() {
-        if (score >= multiplierCost && score != 0) {
-            score -= multiplierCost;
-            multiplierCost *= 2;
-            multiplier += 1;
-            price.innerText = multiplierCost  + " credits";
-            
-            updateScore();
-            updateMultiplierButton();
-        }
-    }
-
-    function autoIncrement() {
-        score += clickValue * multiplier;
-        updateScore();
-    }
-
-    function buyAutoClick() {        
-        if (autoClickSpeed > 2500) {
-            if (score >= autoPriceValue && score != 0) {
-                score -= autoPriceValue;
-                autoPriceValue *= 2;
-                updateScore();
-                autoActive = true;
-            }
-            autoClickSpeed -= 500;
-        }
-
-        priceAuto.innerText = autoPriceValue + " credits";
-
-        if (autoActive == true) {
-            clearInterval(autoInterval);
-            autoInterval = setInterval(autoIncrement, autoClickSpeed);
-        }
-    }
-
-    auto.addEventListener("click", buyAutoClick);
-    multi.addEventListener("click", buyMultiplier);
-
-    rocket.addEventListener("click", function () {
-        score += clickValue * multiplier;
-        //console.log(`score: ${score} \nclickValue: ${clickValue} \nmultiplier: ${multiplier} \nincrement: ${clickValue * multiplier}`);
+  bonus.addEventListener("click", function () {
+    if (!bonusActive) {
+      if (score >= bonusPriceValue) {
+        score -= bonusPriceValue;
+        bonusPriceValue *= 2;
+        pricebonus.innerText = bonusPriceValue + " credits";
         updateScore();
 
-        if (score >= purchaseCost) {
-            score -= purchaseCost;
-            score = Math.max(0, score);
-            updateScore();
-        }
-    });
-    
-    const infoButton = document.getElementById('buttoninfo');
-    const overlay = document.getElementById('overlay');
-    const gameInfo = document.getElementById('gameInfo');
-    const closeButton =document.getElementById('closeButton');
-    // Add a click event listener to the button
-    infoButton.addEventListener('click', () => {
-      // Show the overlay and the hidden paragraph
-        overlay.style.display = 'block';
-        gameInfo.style.display = 'block';
-    });
-    
-    // Add a click event listener to the overlay (to close the modal)
-    overlay.addEventListener('click', () => {
-      // Hide the overlay and the hidden paragraph
-        overlay.style.display = 'none';
-        gameInfo.style.display = 'none';
-    });
-    
-    closeButton.addEventListener('click', () => {
-        gameInfo.style.display = 'none';
-        overlay.style.display = 'none';
-    });
-    function createStarOutsideView() {
-        const starsContainer = document.querySelector('.stars');
-      
-        const star = document.createElement('div');
-        star.classList.add('star');
-        star.style.left = `${Math.random() * 100}vw`;
-        star.style.top = '0vh'; 
-      
-        const animationDuration = `${Math.random() * 3 + 2}s`; 
-        star.style.animation = `moveStar ${animationDuration} linear infinite`;
-      
-        star.addEventListener('animationiteration', () => {
-          starsContainer.removeChild(star);
-          createStarOutsideView();
-        });
-      
-        starsContainer.appendChild(star);
+        timeLeft = 30;
+        countdown();
+        bonusActive = true;
+        timer.style.display = "block";
+        bonus.disabled = true;
       }
-      
-      function createStarsOutsideView(count) {
-        const interval = 200; 
-        for (let i = 0; i < count; i++) {
-          setTimeout(createStarOutsideView, i * interval);
-        }
+    }
+  });
+
+  function updateMultiplierButton() {
+    multi.innerText = `Multiplier x${multiplier}`;
+  }
+
+  function buyMultiplier() {
+    if (score >= multiplierCost && score != 0) {
+      score -= multiplierCost;
+      multiplierCost *= 2;
+      multiplier += 1;
+      price.innerText = multiplierCost + " credits";
+
+      updateScore();
+      updateMultiplierButton();
+    }
+  }
+
+  function autoIncrement() {
+    score += clickValue * multiplier;
+    updateScore();
+  }
+
+  function buyAutoClick() {
+    if (autoClickSpeed > 2500) {
+      if (score >= autoPriceValue && score != 0) {
+        score -= autoPriceValue;
+        autoPriceValue *= 2;
+        updateScore();
+        autoActive = true;
       }
-      
-      createStarsOutsideView(100); 
+      autoClickSpeed -= 500;
+    }
+
+    priceAuto.innerText = autoPriceValue + " credits";
+
+    if (autoActive == true) {
+      clearInterval(autoInterval);
+      autoInterval = setInterval(autoIncrement, autoClickSpeed);
+    }
+  }
+
+  auto.addEventListener("click", buyAutoClick);
+  multi.addEventListener("click", buyMultiplier);
+
+  rocket.addEventListener("click", function () {
+    score += clickValue * multiplier;
+    //console.log(`score: ${score} \nclickValue: ${clickValue} \nmultiplier: ${multiplier} \nincrement: ${clickValue * multiplier}`);
+    updateScore();
+
+    if (score >= purchaseCost) {
+      score -= purchaseCost;
+      score = Math.max(0, score);
+      updateScore();
+    }
+  });
+
+  const infoButton = document.getElementById("buttoninfo");
+  const overlay = document.getElementById("overlay");
+  const gameInfo = document.getElementById("gameInfo");
+  const closeButton = document.getElementById("closeButton");
+  // Add a click event listener to the button
+  infoButton.addEventListener("click", () => {
+    // Show the overlay and the hidden paragraph
+    overlay.style.display = "block";
+    gameInfo.style.display = "block";
+  });
+
+  // Add a click event listener to the overlay (to close the modal)
+  overlay.addEventListener("click", () => {
+    // Hide the overlay and the hidden paragraph
+    overlay.style.display = "none";
+    gameInfo.style.display = "none";
+  });
+
+  closeButton.addEventListener("click", () => {
+    gameInfo.style.display = "none";
+    overlay.style.display = "none";
+  });
+
+  /*
+    function updateButtonStates(bonus, multi, auto) {
+      if (score >= bonusPriceValue) {
+        bonus.removeAttribute("disabled");
+      } else {
+        bonus.setAttribute("disabled", "disabled");
+      }
+
+      if (score >= multiplierCost) {
+        multi.removeAttribute("disabled");
+      } else {
+        multi.setAttribute("disabled", "disabled");
+      }
+
+      if (score >= autoPriceValue) {
+        auto.removeAttribute("disabled");
+      } else {
+        auto.setAttribute("disabled", "disabled");
+      }
+    }
+
+    updateButtonStates(bonus, multi, auto);
+  };
+*/
+  function addHighscore(playerName, score) {
+    const newRow = document.createElement("tr");
+
+    const rankCell = document.createElement("td");
+    const playerCell = document.createElement("td");
+    const scoreCell = document.createElement("td");
+
+    rankCell.textContent = "1";
+    playerCell.textContent = playerName;
+    scoreCell.textContent = score;
+
+    newRow.appendChild(rankCell);
+    newRow.appendChild(playerCell);
+    newRow.appendChild(scoreCell);
+
+    const leaderboardTable = document.querySelector("#leaderboard table tbody");
+    leaderboardTable.appendChild(newRow);
+  }
+  addHighscore("Player 1", 100);
+  addHighscore("Player 2", 150);
+  addHighscore("Player 3", 200);
+  addHighscore("Player 4", 250);
+  addHighscore("Player 5", 300);
+  function createStarOutsideView() {
+    const starsContainer = document.querySelector(".stars");
+
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.left = `${Math.random() * 100}vw`;
+    star.style.top = "0vh";
+
+    const animationDuration = `${Math.random() * 3 + 2}s`;
+    star.style.animation = `moveStar ${animationDuration} linear infinite`;
+
+    star.addEventListener("animationiteration", () => {
+      starsContainer.removeChild(star);
+      createStarOutsideView();
+    });
+
+    starsContainer.appendChild(star);
+  }
+
+  function createStarsOutsideView(count) {
+    const interval = 200;
+    for (let i = 0; i < count; i++) {
+      setTimeout(createStarOutsideView, i * interval);
+    }
+  }
+
+  createStarsOutsideView(100);
 })();
