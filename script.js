@@ -13,6 +13,7 @@
     const overlay = document.getElementById('overlay');
     const gameInfo = document.getElementById('gameInfo');
     const closeButton = document.getElementById('closeButton');
+    const purchaseHistoryDisplay = document.getElementById('purchasehistorydisplay');
   
     // General
     let score;
@@ -33,6 +34,9 @@
     let purchaseCost;
     let multiplier;
     let multiplierCost;
+
+    // purchaseHistory
+    let purchaseHistory = [];
 
 
     function saveLocalStorage() {
@@ -66,6 +70,26 @@
         }
     }
 
+    function displayPurchaseHistory () {
+        let historyText = "";
+        
+        for (let i = 0; i < purchaseHistory.length; i++) {
+            historyText += `${purchaseHistory[i][0]} for ${purchaseHistory[i][1]} credit(s)`;
+            if (i < purchaseHistory.length - 1) {
+                historyText += "\n";
+            }
+            if (i == 9)
+                break;
+        }
+        purchaseHistoryDisplay.innerText = historyText; 
+    }
+
+    function getPurchaseHistory(nameButton, cost) {
+        let newPurchase = [nameButton, cost];
+        purchaseHistory.unshift(newPurchase);
+        displayPurchaseHistory();
+    }
+
     function countdown() {
         if (timeLeft == 30) {
             clickValue = clickValue * 2;
@@ -91,6 +115,7 @@
         if (!bonusActive) {
             if (score >= bonusPriceValue) {
                 score -= bonusPriceValue;
+                getPurchaseHistory('Bonus', bonusPriceValue);
                 bonusPriceValue *= 2;
                 pricebonus.innerText = bonusPriceValue  + " credits";
                 updateScore();
@@ -122,6 +147,7 @@
     function buyMultiplier() {
         if (score >= multiplierCost && score != 0) {
             score -= multiplierCost;
+            getPurchaseHistory('Multiplier', multiplierCost);
             multiplierCost *= 2;
             multiplier += 1;
             price.innerText = multiplierCost  + " credits";
@@ -140,6 +166,7 @@
         if (autoClickSpeed > 500) {
             if (score >= autoPriceValue && score != 0) {
                 score -= autoPriceValue;
+                getPurchaseHistory('Auto-click', autoPriceValue);
                 autoPriceValue *= 2;
                 updateScore();
                 autoActive = true;
@@ -153,57 +180,7 @@
             clearInterval(autoInterval);
             autoInterval = setInterval(autoIncrement, autoClickSpeed);
         }
-    } 
-
-  /*
-    function updateButtonStates(bonus, multi, auto) {
-        if (score >= bonusPriceValue) {
-            bonus.removeAttribute("disabled");
-        } else {
-            bonus.setAttribute("disabled", "disabled");
-        }
-
-        if (score >= multiplierCost) {
-            multi.removeAttribute("disabled");
-        } else {
-            multi.setAttribute("disabled", "disabled");
-        }
-
-        if (score >= autoPriceValue) {
-            auto.removeAttribute("disabled");
-        } else {
-            auto.setAttribute("disabled", "disabled");
-        }
     }
-
-    updateButtonStates(bonus, multi, auto);
-    };
-*/
-  
-
-    /*function addHighscore(playerName, score) {
-        const newRow = document.createElement("tr");
-
-        const rankCell = document.createElement("td");
-        const playerCell = document.createElement("td");
-        const scoreCell = document.createElement("td");
-
-        rankCell.textContent = "1";
-        playerCell.textContent = playerName;
-        scoreCell.textContent = score;
-
-        newRow.appendChild(rankCell);
-        newRow.appendChild(playerCell);
-        newRow.appendChild(scoreCell);
-
-        const leaderboardTable = document.querySelector("#leaderboard table tbody");
-        leaderboardTable.appendChild(newRow);
-  }
-    addHighscore("Player 1", 100);
-    addHighscore("Player 2", 150);
-    addHighscore("Player 3", 200);
-    addHighscore("Player 4", 250);
-    addHighscore("Player 5", 300);*/
   
     function createStarOutsideView() {
         const starsContainer = document.querySelector(".stars");
@@ -222,14 +199,14 @@
         });
 
         starsContainer.appendChild(star);
-}
+    }  
 
     function createStarsOutsideView(count) {
         const interval = 200;
         for (let i = 0; i < count; i++) {
             setTimeout(createStarOutsideView, i * interval);
         }
-}
+    }
 
     createStarsOutsideView(100);
 
@@ -273,7 +250,7 @@
 
     function getLocalStorage() {
         score = parseInt(localStorage.getItem("score")) || 0;
-        clickValue = parseInt(localStorage.getItem("click")) || 1;
+        clickValue = parseInt(localStorage.getItem("clickValue")) || 1;
         bonusActive = localStorage.getItem("bonusActive") === "true";
         bonusPriceValue = parseInt(localStorage.getItem("bonusPriceValue")) || 1;
         timeLeft = parseInt(localStorage.getItem("timeLeft")) || 0;
