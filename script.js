@@ -37,6 +37,7 @@
 
     // purchaseHistory
     let purchaseHistory = [];
+    let historyText = "";
 
 
     function saveLocalStorage() {
@@ -52,6 +53,8 @@
         localStorage.setItem("purchageCost", purchaseCost);
         localStorage.setItem("multiplier", multiplier);
         localStorage.setItem("multiplierCost", multiplierCost);
+        localStorage.setItem("purchaseHistory", purchaseHistory);
+        localStorage.setItem("historyText", historyText);
     }
 
     function updateScore() {
@@ -71,8 +74,6 @@
     }
 
     function displayPurchaseHistory () {
-        let historyText = "";
-        
         for (let i = 0; i < purchaseHistory.length; i++) {
             historyText += `${purchaseHistory[i][0]} for ${purchaseHistory[i][1]} credit(s)`;
             if (i < purchaseHistory.length - 1) {
@@ -270,6 +271,7 @@
         if (timeLeft > 0) {
             bonusAfterReload();
         }
+        displayPurchaseHistory();
         price.innerText = multiplierCost  + " credits";
         pricebonus.innerText = bonusPriceValue  + " credits";
         priceAuto.innerText = autoPriceValue + " credits";
