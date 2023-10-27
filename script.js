@@ -13,9 +13,12 @@
   const overlay = document.getElementById("overlay");
   const gameInfo = document.getElementById("gameInfo");
   const closeButton = document.getElementById("closeButton");
-  const purchaseHistoryDisplay = document.getElementById(
-    "purchasehistorydisplay"
-  );
+  const purchaseHistoryDisplay = document.getElementById("purchasehistorydisplay");
+  
+  const soundIcon = document.getElementById("soundicon");
+  const music = document.getElementById("music");
+  const rocketIcons = document.querySelectorAll(".costum i");
+  const mainRocket = document.getElementById("rocket");
 
   // General
   let score;
@@ -41,6 +44,12 @@
   let purchaseHistory = [];
   let historyText = "";
 
+  // Sound + Landing Page
+  var menus = document.getElementById("menus");
+  var startgame = document.getElementById("startgame");
+  var delay = 100;
+  let color;
+
   function saveLocalStorage() {
     localStorage.setItem("score", score);
     localStorage.setItem("clickValue", clickValue);
@@ -56,6 +65,7 @@
     localStorage.setItem("multiplierCost", multiplierCost);
     localStorage.setItem("purchaseHistory", purchaseHistory);
     localStorage.setItem("historyText", historyText);
+    localStorage.setItem("color", color);
   }
 
   function updateScore() {
@@ -75,14 +85,18 @@
   }
 
   function displayPurchaseHistory() {
+    historyText = "";
     for (let i = 0; i < purchaseHistory.length; i++) {
       historyText += `${purchaseHistory[i][0]} for ${purchaseHistory[i][1]} credit(s)`;
-      if (i < purchaseHistory.length - 1) {
+      if (i < purchaseHistory.length) {
         historyText += "\n";
       }
-      if (i == 9) break;
+      if (i == 9) {
+        break;
+      }
     }
     purchaseHistoryDisplay.innerText = historyText;
+    console.log(purchaseHistory);
   }
 
   function getPurchaseHistory(nameButton, cost) {
@@ -230,6 +244,11 @@
   }
 
   function resetGame() {
+    if (score == 0) {
+      rocket.style.color = "whitesmoke";
+      color = "whitesmoke";
+      localStorage.setItem("color", color);
+    }
     score = 0;
     clickValue = 1;
     bonusActive = false;
@@ -279,6 +298,12 @@
     price.innerText = multiplierCost + " credits";
     pricebonus.innerText = bonusPriceValue + " credits";
     priceAuto.innerText = autoPriceValue + " credits";
+    if (score > 0) {
+        document.querySelector(".startpage").style.display = "none";
+    }
+    color = localStorage.getItem("color");
+    mainRocket.style.color = color;
+    music.muted = localStorage.getItem("soundMuted") === "true";
   }
 
   function updateButtonStyles(bonus, multi, auto) {
@@ -309,27 +334,9 @@
 
   updateButtonStylesInBackground(bonus, multi, auto);
 
-  window.addEventListener("load", getLocalStorage);
-  window.addEventListener("beforeunload", saveLocalStorage);
-
-  rocket.addEventListener("click", clickOnRocket);
-
-  auto.addEventListener("click", buyAutoClick);
-  multi.addEventListener("click", buyMultiplier);
-  bonus.addEventListener("click", bonusHandler);
-
-  reset.addEventListener("click", resetGame);
-
-  infoButton.addEventListener("click", infoButtonClick);
-  overlay.addEventListener("click", infoOverlay);
-  closeButton.addEventListener("click", closeInfoPanel);
-
   document.getElementById("startgame").addEventListener("click", function () {
     document.querySelector(".startpage").style.display = "none";
   });
-  var menus = document.getElementById("menus");
-  var startgame = document.getElementById("startgame");
-  var delay = 100;
 
   startgame.addEventListener("mouseenter", function () {
     setTimeout(function () {
@@ -381,8 +388,6 @@
       menus.pause();
     }, delay);
   });
-  const soundIcon = document.getElementById("soundicon");
-  const music = document.getElementById("music");
 
   music.volume = 0.1;
 
@@ -398,13 +403,30 @@
       music.muted = true;
       soundIcon.classList.add("fa-volume-mute");
     }
+    localStorage.setItem("soundMuted", music.muted);
   });
-  const rocketIcons = document.querySelectorAll(".costum i");
-  const mainRocket = document.getElementById("rocket");
+
   rocketIcons.forEach((rocketIcon) => {
     rocketIcon.addEventListener("click", () => {
-      const color = getComputedStyle(rocketIcon).color;
+      color = getComputedStyle(rocketIcon).color;
+      localStorage.setItem("color", color);
       mainRocket.style.color = color;
     });
   });
+
+  window.addEventListener("load", getLocalStorage);
+  window.addEventListener("beforeunload", saveLocalStorage);
+
+  rocket.addEventListener("click", clickOnRocket);
+
+  auto.addEventListener("click", buyAutoClick);
+  multi.addEventListener("click", buyMultiplier);
+  bonus.addEventListener("click", bonusHandler);
+
+  reset.addEventListener("click", resetGame);
+
+  infoButton.addEventListener("click", infoButtonClick);
+  overlay.addEventListener("click", infoOverlay);
+  closeButton.addEventListener("click", closeInfoPanel);
+
 })();
