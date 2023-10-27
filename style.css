@@ -89,9 +89,22 @@ body {
   width: 25%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: start;
+  margin: 0;
+  padding: 0;
+}
+.inforeset{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 
+.h1info{
+  font-size: 25px;
+  position: absolute;
+  top:25px;
+  left:15px;
+}
 .score {
   color: #00ff7f;
   background-color: black;
@@ -99,7 +112,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: start;
-
   padding-top: 25px;
 }
 
@@ -196,25 +208,20 @@ body {
   margin: 10px;
   transition: transform 0.2s; 
 }
-
 .btn.disabled {
-  text-align: center;
- font-size: 22px;
- color: black;
- background-color: rgba(128, 128, 128, 0.158);
- border: 2px solid black;
- padding: 5px 30px;
- border-radius: 10px;
- width: 120px;
- margin: 10px;
- cursor: not-allowed;
- transition: none; 
+  background-color: rgba(128, 128, 128, 0.158);
+  border: initial;
+  cursor: not-allowed;
+  margin: 10px;
+  cursor: not-allowed;
+  transform: none;
 }
-
-.btn.disabled:hover,.btn.disabled:focus  {
- transform: none; 
+.btn.disabled + .multi:hover,
+.btn.disabled + .bonus:hover,
+.btn.disabled + .auto:hover {
+  transform: none;
+  transition: none;
 }
-
 .price,
 .pricebonus,
 .priceauto {
@@ -306,34 +313,7 @@ li {
   height: 100%;
   z-index: 999;
 }
-.alien {
-  height: 70px;
-  width: auto;
-}
-.astro {
-  position: absolute;
-  top: 10%;
-  left: 5%;
-  height: 250px;
-  width: auto;
-  animation: rotateEarth 60s linear infinite;
-  z-index: 1;
-}
-.earth {
-  position: absolute;
-  top: 60%;
-  left: 80%;
-  width: 80px;
-  height: auto;
-}
-.starting {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  margin-top: 30px;
-}
+
 #soundicon {
   position: absolute;
   top: 10px;
@@ -367,6 +347,7 @@ li {
   transition: all 0.2s;
 }
 .hiden1 {
+  text-align: left;
   padding: 50px;
   font-size: 20px;
 }
@@ -423,6 +404,7 @@ li {
   line-height: 1.5;
 }
 .chose {
+  text-align: center;
   font-size: 30px;
   padding-top: 40px;
 }
@@ -461,6 +443,29 @@ li {
 #music {
   display: none;
 }
+.earth {
+  position: absolute;
+  bottom: 150px;
+  right: 15%;
+  width:  100px;
+  height: auto;
+}
+.astro {
+  position: absolute;
+  top:10%;
+  left: 10%;
+  height: 250px;
+  animation: rotateEarth 60s linear infinite;
+  z-index: 1;
+}
+.starting {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  margin-top: 30px;
+}
 @media (max-width: 768px) {
   * {
     overflow: hidden;
@@ -477,13 +482,21 @@ li {
     flex-direction: column-reverse;
   }
 
-  .score {
+  .rightpanel {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: space-around;
-    height: 25%;
+    height: 35%;
     width: 100%;
     border-left: none;
+    align-items: center;
+  }
+  .score{
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
+    padding-top: 20%;
+    justify-content: center;
     align-items: center;
   }
 
@@ -510,25 +523,30 @@ li {
     height: 25%;
     justify-content: center;
     align-items: center;
+
   }
 
-  .info {
-    display: none;
+  .h1info{
+    position: absolute;
+    top: 10px;
+    left: 5px;
   }
-
+  .h1reset{
+    position: absolute;
+    top: 10px;
+    right: 5px;
+  }
   .h1store {
     display: none;
   }
   
-  .scoreboard {
-    margin-top: auto;
-  }
+  
 
   .main {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 50%;
+    height: 40%;
   }
   
   .player {
@@ -572,9 +590,359 @@ li {
   .priceauto {
     font-size: 16px;
   }
-}
+
 .btn:disabled {
   background-color: black;
   color: gray;
   cursor: not-allowed;
+  border-radius: 10px;
+  width: 100px;
+  display: inline-block;
+  margin: 5px;
+  font-size: 18px;
+  padding: 5px;
+  display: none;
+}
+.startpage{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.logostr{
+  font-size: 50px
+}
+.alien {
+  height: 50px;
+  width: auto;
+}
+.earth {
+display: none;
+}
+.starting {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  margin-top: 30px;
+}
+.startgame {
+  border: 2px solid;
+  padding: 5px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.textstart{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size:16px;
+  padding: 30px;
+}
+.pstart{
+  text-align: center;
+}
+.purchasehistory{
+  display: none;
+}
+.multi,
+.bonus,
+.auto {
+  margin: 0;
+}
+.logo2{
+padding-bottom: 30px;
+}
+.astro {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 150px;
+  animation: rotateEarth 60s linear infinite;
+  z-index: 999;
+}
+.hidden-paragraph {
+  display: none;
+  background-color: rgba(145, 135, 135, 0.8);
+  padding: 10px;
+  border: 1px solid rgba(119, 111, 111, 0.8);
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  color: whitesmoke;
+  word-spacing: 4px;
+  width: 80%; 
+  max-width: 300px; 
+}
+
+.hiden1 {
+  text-align: left;
+  font-size: 16px; 
+  padding: 25px; 
+}
+
+.costum {
+  text-align: center;
+  letter-spacing: 10px;
+  font-size: 40px;
+  line-height: 1.2; 
+}
+
+.chose {
+  text-align: center;
+  font-size: 24px; 
+  padding-top: 20px; 
+}
+
+.close-button {
+  font-size: 24px; 
+  top: 5px; 
+  right: 5px; 
+}
+#soundicon {
+  font-size: 20px;
+  color: whitesmoke;
+  cursor: pointer;
+}
+}
+@media (min-width: 769px) and (max-width: 1084px) {
+  * {
+    overflow: hidden;
+  }
+
+  body {
+    width: 100vw;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .rightpanel {
+    padding-top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 35%;
+    width: 100%;
+    border-left: none;
+    align-items: center;
+  }
+
+  .score {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .store {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  .btn{
+    padding-right: 20px;
+  }
+  .nav {
+    border-right: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 25%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .h1info {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+  }
+  .h1reset {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+  }
+  .h1store {
+    display: none;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40%;
+  }
+
+  .player {
+    padding-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scoreboard {
+    display: none;
+    margin: 0;
+  }
+
+  .pointsh2 {
+    padding-right: 30px;
+  }
+
+  .playerinfo {
+    font-size: 20px;
+    padding-left: 25px;
+  }
+  #playericon{
+    font-size: 20px;
+  }
+  .logo {
+    display: none;
+  }
+  .logo2 {
+    display: block;
+    font-size: 40px;
+  }
+  #timer {
+    width: 100%;
+    font-size: 50px;
+    top: 45%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #rocket {
+    margin-top: 100px;
+    font-size: 100px;
+  }
+  .price,
+  .pricebonus,
+  .priceauto {
+    padding-top: 20px;
+    font-size: 20px;
+  }
+
+  .startpage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-evenly;
+  }
+  .logostr {
+    padding: 100px;
+    font-size: 100px;
+  }
+  .alien {
+    height: 50px;
+    width: auto;
+  }
+  .earth {
+    display: none;
+  }
+  .starting {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    margin-top: 15%;
+  }
+  .startgame {
+    border: 2px solid;
+    padding: 5px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .textstart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin: 0;
+  }
+  .pstart {
+    text-align: center;
+  }
+  .purchasehistory {
+    display: none;
+  }
+  .multi,
+  .bonus,
+  .auto {
+  
+    margin: 25px;
+  }
+  .logo2 {
+    font-size: 65px;
+    padding-bottom: 40px;
+  }
+  .astro {
+    position: absolute;
+    top: 5%;
+    left: 60%;
+    height: 250px;
+    animation: rotateEarth 60s linear infinite;
+    z-index: 999;
+  }
+  .hidden-paragraph {
+    padding-top: 50px;
+    display: none;
+    background-color: rgba(145, 135, 135, 0.8);
+    border: 1px solid rgba(119, 111, 111, 0.8);
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    color: whitesmoke;
+    word-spacing: 4px;
+    width: 100%;
+    max-width: 600px;
+  }
+ 
+  .hiden1 {
+    text-align: left;
+    font-size: 20px;
+    padding: 30px;
+  }
+
+  .costum {
+    text-align: center;
+    letter-spacing: 30px;
+    font-size: 100px;
+    line-height: 2;
+  }
+
+  .chose {
+    text-align: center;
+    font-size: 30px;
+    padding-top: 20px;
+  }
+
+  .close-button {
+    font-size: 24px;
+    top: 5px;
+    right: 5px;
+  }
+  #soundicon {
+    font-size: 20px;
+    color: whitesmoke;
+    cursor: pointer;
+  }
 }
