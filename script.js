@@ -299,6 +299,7 @@
             auto.classList.add("disabled");
         }
     }
+    
     function updateButtonStylesInBackground(bonus, multi, auto) {
         setInterval(() => {
             updateButtonStyles(bonus, multi, auto);
