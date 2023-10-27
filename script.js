@@ -242,8 +242,11 @@
         purchaseCost = 0;
         multiplier = 1;
         multiplierCost = 1;
+        purchaseHistory = [];
+        historyText = "";
         updateScore();
         updateMultiplierButton();
+        displayPurchaseHistory();
         price.innerText = multiplierCost  + " credits";
         pricebonus.innerText = bonusPriceValue  + " credits";
         priceAuto.innerText = autoPriceValue + " credits";
