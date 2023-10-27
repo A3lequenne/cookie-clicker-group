@@ -64,7 +64,8 @@
     localStorage.setItem("multiplier", multiplier);
     localStorage.setItem("multiplierCost", multiplierCost);
     localStorage.setItem("purchaseHistory", purchaseHistory);
-    //localStorage.setItem("historyText", historyText);  
+    localStorage.setItem("historyText", historyText);
+    localStorage.setItem("color", color);
   }
 
   function updateScore() {
@@ -245,6 +246,8 @@
   function resetGame() {
     if (score == 0) {
       rocket.style.color = "whitesmoke";
+      color = "whitesmoke";
+      localStorage.setItem("color", color);
     }
     score = 0;
     clickValue = 1;
