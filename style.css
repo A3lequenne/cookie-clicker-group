@@ -265,30 +265,182 @@ body {
   background: rgba(0, 0, 0, 0.7);
   z-index: 999;
 }
+.textstart {
+  margin-top: 50px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  color: white;
+  word-spacing:
+   8px;
+}
+.logostr {
+  margin-top: 50px;
+  text-align: left;
+  font-size: 80px;
+  font-weight: 700;
+}
+.pstart {
+  margin-bottom: 25px;
+  font-size: 25px;
+  font-weight: bold;
+}
+li {
+  margin-bottom: 10px; /* Adjust the margin as needed */
+}
+.startpage {
+  background-image: url("https://opengameart.org/sites/default/files/space-2.png");
 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+.alien {
+  height: 70px;
+  width: auto;
+}
+.astro {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  height: 250px;
+  width: auto;
+  animation: rotateEarth 60s linear infinite;
+  z-index: 1;
+}
+.earth {
+  position: absolute;
+  top: 60%;
+  left: 80%;
+  width: 80px;
+  height: auto;
+}
+.starting {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  margin-top: 30px;
+}
+#soundicon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  padding-bottom: 50px;
+  font-size: 26px;
+  color: whitesmoke;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+#soundicon:hover {
+  color: #ffa500;
+}
+@keyframes rotateEarth {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.feature-name {
+  color: #ffa500;
+}
+.feature-name1 {
+  color: #00ff7f;
+}
 .info {
   cursor: pointer;
   transition: all 0.2s;
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
+}
+.hiden1 {
+  padding: 50px;
+  font-size: 20px;
+}
+#rocket0,
+#rocket1,
+#rocket2,
+#rocket3,
+#rocket4,
+#rocket5 {
+  transition: text-shadow 0.3s ease-in-out;
 }
 
+#rocket0 {
+  color: bisque;
+}
+#rocket1 {
+  color: pink;
+}
+#rocket2 {
+  color: aqua;
+}
+#rocket3 {
+  color: silver;
+}
+#rocket4 {
+  color: gold;
+}
+#rocket5 {
+  color: #00ff7f;
+}
+
+#rocket0:hover {
+  text-shadow: 0 0 15px bisque;
+}
+#rocket1:hover {
+  text-shadow: 0 0 15px pink;
+}
+#rocket2:hover {
+  text-shadow: 0 0 15px aqua;
+}
+#rocket3:hover {
+  text-shadow: 0 0 15px silver;
+}
+#rocket4:hover {
+  text-shadow: 0 0 15px gold;
+}
+#rocket5:hover {
+  text-shadow: 0 0 15px #00ff7f;
+}
+.costum {
+  text-align: center;
+  letter-spacing: 50px;
+  font-size: 80px;
+  line-height: 1.5;
+}
+.chose {
+  font-size: 30px;
+  padding-top: 40px;
+}
 .hidden-paragraph {
   display: none;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(145, 135, 135, 0.8);
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(119, 111, 111, 0.8);
   margin: 0 auto;
   position: absolute;
   top: 50%;
   left: 51%;
   transform: translate(-50%, -50%);
   z-index: 1000;
-  color: black;
+  color: whitesmoke;
   word-spacing: 4px;
 }
-
 .close-button {
   position: absolute;
   top: 10px;
@@ -296,7 +448,20 @@ body {
   font-size: 20px;
   cursor: pointer;
 }
-
+.startgame {
+  border: 2px solid;
+  padding: 5px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.startgame:hover {
+  background-color: #ffa500;
+  color: #001f3f;
+}
+#music {
+  display: none;
+}
 @media (max-width: 768px) {
   * {
     overflow: hidden;
