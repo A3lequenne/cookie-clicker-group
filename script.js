@@ -280,6 +280,33 @@
         priceAuto.innerText = autoPriceValue + " credits";
     }
 
+    function updateButtonStyles(bonus, multi, auto) {
+        if (score >= bonusPriceValue) {
+            bonus.classList.remove("disabled");
+        } else {
+            bonus.classList.add("disabled");
+        }
+    
+        if (score >= multiplierCost) {
+            multi.classList.remove("disabled");
+        } else {
+            multi.classList.add("disabled");
+        }
+    
+        if (score >= autoPriceValue) {
+            auto.classList.remove("disabled");
+        } else {
+            auto.classList.add("disabled");
+        }
+    }
+    function updateButtonStylesInBackground(bonus, multi, auto) {
+        setInterval(() => {
+            updateButtonStyles(bonus, multi, auto);
+        }, 1000);
+    }
+    
+    updateButtonStylesInBackground(bonus, multi, auto);
+
     window.addEventListener("load", getLocalStorage);
     window.addEventListener("beforeunload", saveLocalStorage);
 
