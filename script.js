@@ -430,4 +430,15 @@
   overlay.addEventListener("click", infoOverlay);
   closeButton.addEventListener("click", closeInfoPanel);
 
+  //I add this code is for when u chose a custom color on your rocket that the hidden pannel on info it's closing automatic after u click on ur selected color.
+ 
+  rocketIcons.forEach((rocketIcon) => {
+    rocketIcon.addEventListener("click", () => {
+      color = getComputedStyle(rocketIcon).color;
+      localStorage.setItem("color", color);
+      mainRocket.style.color = color;
+      closeInfoPanel(); 
+    });
+  });
+
 })();
