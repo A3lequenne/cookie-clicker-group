@@ -100,6 +100,7 @@ body {
 }
 
 .h1info{
+  color: whitesmoke;
   font-size: 25px;
   position: absolute;
   top:25px;
@@ -172,7 +173,7 @@ body {
 
 #rocket:hover,
 #rocket:active {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 #playericon {
@@ -239,7 +240,7 @@ body {
 .multi:hover,
 .bonus:hover,
 .auto:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .time {
@@ -402,7 +403,9 @@ li {
   letter-spacing: 50px;
   font-size: 80px;
   line-height: 1.5;
+  padding-left: 50px;
 }
+
 .chose {
   text-align: center;
   font-size: 30px;
@@ -428,6 +431,13 @@ li {
   right: 10px;
   font-size: 20px;
   cursor: pointer;
+}
+.sourcecode{
+  color: white;
+  text-align: center;
+  margin-top: 50px;
+  font-size: 16px;
+  letter-spacing: 0;
 }
 .startgame {
   border: 2px solid;
@@ -469,6 +479,7 @@ li {
 @media (max-width: 768px) {
   * {
     overflow: hidden;
+    
   }
   
   body {
@@ -486,7 +497,7 @@ li {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 35%;
+    height: 45%;
     width: 100%;
     border-left: none;
     align-items: center;
@@ -522,8 +533,8 @@ li {
     width: 100%;
     height: 25%;
     justify-content: center;
-    align-items: center;
-
+    align-items: start;
+    padding-top: 50px;
   }
 
   .h1info{
@@ -540,11 +551,11 @@ li {
     display: none;
   }
   
-  
-
   .main {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
     width: 100%;
     height: 40%;
   }
@@ -575,15 +586,13 @@ li {
     font-size: 40px;
   }
   #timer {
-    width: 100%;
-    font-size: 30px;
-    top: 33%;
-    left: 50%;
-    transform: translateX(-50%);
+    position: absolute;
+    font-size: 20px;
+    top:45%;
   }
   #rocket {
-    margin-top: 25px;
     font-size: 80px;
+    margin-top: 80px;
   }
   .price,
   .pricebonus,
@@ -688,6 +697,7 @@ padding-bottom: 30px;
 }
 
 .costum {
+  padding-left: 0px;
   text-align: center;
   letter-spacing: 10px;
   font-size: 40px;
@@ -737,10 +747,12 @@ padding-bottom: 30px;
     border-left: none;
     align-items: center;
   }
-
-  .score {
+ 
+  .score{
+    padding-left: 5%;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: row-reverse;
+    width: 100%;
     height: 100%;
     justify-content: center;
     align-items: center;
@@ -792,6 +804,7 @@ padding-bottom: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 50%;
   }
 
   .scoreboard {
@@ -804,8 +817,10 @@ padding-bottom: 30px;
   }
 
   .playerinfo {
+    display: flex;
+    flex-direction: row;
     font-size: 20px;
-    padding-left: 25px;
+    width: 60%;
   }
   #playericon{
     font-size: 20px;
@@ -814,8 +829,8 @@ padding-bottom: 30px;
     display: none;
   }
   .logo2 {
+    position: relative;
     display: block;
-    font-size: 40px;
   }
   #timer {
     width: 100%;
@@ -923,6 +938,7 @@ padding-bottom: 30px;
   }
 
   .costum {
+    padding-left: 0px;
     text-align: center;
     letter-spacing: 30px;
     font-size: 100px;
