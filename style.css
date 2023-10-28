@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -163,19 +164,23 @@ body {
   color: #ffa500;
 }
 
-#rocket {
+#rocket { 
+  margin-top: 100px;
   color: whitesmoke;
   font-size: 100px;
   cursor: pointer;
-  transition: all 0.2s;
-  margin-top: 200px;
+  animation: animate 0.2s ease infinite;
+  text-shadow: 0 0.45em 0.1em #FF6A00, 0 0.30em 0.05em #FF6A00, 0 0.15em 0.1em black, 0 0.45em 0.1em #FF4500, 0 0.55em 0.1em #FF4500;
 }
 
-#rocket:hover,
-#rocket:active {
-  transform: scale(1.1);
+@keyframes animate {
+  0%, 100% {
+    transform: translateY(-1px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
 }
-
 #playericon {
   color: #00ff7f;
   font-size: 18px;
@@ -374,7 +379,7 @@ li {
   color: silver;
 }
 #rocket4 {
-  color: gold;
+  color: #ffa500;
 }
 #rocket5 {
   color: #00ff7f;
@@ -593,6 +598,7 @@ li {
   #rocket {
     font-size: 80px;
     margin-top: 80px;
+    text-shadow: none;
   }
   .price,
   .pricebonus,
@@ -840,6 +846,7 @@ padding-bottom: 30px;
     transform: translateX(-50%);
   }
   #rocket {
+    text-shadow: none;
     margin-top: 100px;
     font-size: 100px;
   }
