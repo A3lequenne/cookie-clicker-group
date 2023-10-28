@@ -1,0 +1,971 @@
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #00ff7f;
+  font-family: "ArcadeClassic", sans-serif;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  background-color: black;
+}
+
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  width: 2px;
+  height: 2px;
+  animation: moveStar 5s linear infinite;
+}
+
+@keyframes moveStar {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+#timer {
+  color: whitesmoke;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  font-size: 50px;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  word-spacing: 10px;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: black;
+  margin: 0;
+}
+
+.nav {
+  color: #00ff7f;
+  background-color: black;
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding-top: 25px;
+}
+
+.main {
+ 
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.rightpanel {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin: 0;
+  padding: 0;
+}
+.inforeset{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.h1info{
+  color: whitesmoke;
+  font-size: 25px;
+  position: absolute;
+  top:25px;
+  left:15px;
+}
+.score {
+  color: #00ff7f;
+  background-color: black;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding-top: 25px;
+}
+
+.purchasehistory {
+  height: 50%;
+  text-align: center;
+}
+
+.logo {
+  text-align: left;
+  font-size: 50px;
+  font-weight: 700;
+}
+.logo2 {
+  display: none;
+}
+.the,
+.logor {
+  text-shadow: 1px 1px 1px #333, 1px 2px 1px #333, 1px 3px 1px #333,
+    1px 4px 1px #333, 1px 5px 1px #333, 1px 6px 1px #333, 1px 7px 1px #333,
+    1px 8px 1px #333, 1px 9px 1px #333, 1px 10px 1px #333,
+    1px 18px 6px rgba(255, 255, 255, 0.2),
+    /* Using the adjusted opacity */ 1px 22px 10px rgba(253, 252, 252, 0.1),
+    /* Using the adjusted opacity */ 1px 25px 35px rgba(255, 255, 255, 0.1),
+    /* Using the adjusted opacity */ 1px 30px 60px rgba(252, 252, 252, 0.2); /* Using the adjusted opacity */
+  color: whitesmoke;
+}
+
+.Space {
+  text-shadow: 1px 1px 1px #333, 1px 2px 1px #333, 1px 3px 1px #333,
+    1px 4px 1px #333, 1px 5px 1px #333, 1px 6px 1px #333, 1px 7px 1px #333,
+    1px 8px 1px #333, 1px 9px 1px #333, 1px 10px 1px #333,
+    1px 18px 6px rgba(0, 255, 127, 0.2),
+    /* Adjusted opacity to 0.2 */ 1px 22px 10px rgba(0, 255, 127, 0.1),
+    /* Adjusted opacity to 0.1 */ 1px 25px 35px rgba(0, 255, 127, 0.1),
+    /* Adjusted opacity to 0.1 */ 1px 30px 60px rgba(0, 255, 127, 0.2); /* Adjusted opacity to 0.2 */
+  color: #00ff7f;
+}
+
+.clicker {
+  text-shadow: 1px 1px 1px #333, 1px 2px 1px #333, 1px 3px 1px #333,
+    1px 4px 1px #333, 1px 5px 1px #333, 1px 6px 1px #333, 1px 7px 1px #333,
+    1px 8px 1px #333, 1px 9px 1px #333, 1px 10px 1px #333,
+    1px 18px 6px rgba(255, 165, 0, 0.2),
+    /* Adjusted opacity to 0.2 */ 1px 22px 10px rgba(255, 165, 0, 0.1),
+    /* Adjusted opacity to 0.1 */ 1px 25px 35px rgba(255, 165, 0, 0.1),
+    /* Adjusted opacity to 0.1 */ 1px 30px 60px rgba(255, 165, 0, 0.2); /* Adjusted opacity to 0.2 */
+  color: #ffa500;
+}
+
+#rocket { 
+  margin-top: 100px;
+  color: whitesmoke;
+  font-size: 100px;
+  cursor: pointer;
+  animation: animate 0.2s ease infinite;
+  text-shadow: 0 0.45em 0.1em #FF6A00, 0 0.30em 0.05em #FF6A00, 0 0.15em 0.1em black, 0 0.45em 0.1em #FF4500, 0 0.55em 0.1em #FF4500;
+}
+
+@keyframes animate {
+  0%, 100% {
+    transform: translateY(-1px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+#playericon {
+  color: #00ff7f;
+  font-size: 18px;
+}
+#playericonfa {
+  margin-right: 10px;
+}
+.playericon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  border-radius: 5px;
+  padding: 3px 15px;
+}
+
+.scoreboard {
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.btn {
+  text-align: center;
+  font-size: 22px;
+  color: #001f3f;
+  background-color: #ffa500;
+  border: 2px solid #001f3f;
+  padding: 5px 30px;
+  border-radius: 10px;
+  width: 120px;
+  margin: 10px;
+  transition: transform 0.2s; 
+}
+.btn.disabled {
+  background-color: rgba(128, 128, 128, 0.158);
+  border: initial;
+  cursor: not-allowed;
+  margin: 10px;
+  cursor: not-allowed;
+  transform: none;
+}
+.btn.disabled + .multi:hover,
+.btn.disabled + .bonus:hover,
+.btn.disabled + .auto:hover {
+  transform: none;
+  transition: none;
+}
+.price,
+.pricebonus,
+.priceauto {
+  font-size: 20px;
+}
+
+.multi,
+.bonus,
+.auto {
+  margin-top: 25px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.multi:hover,
+.bonus:hover,
+.auto:hover {
+  transform: scale(1.1);
+}
+
+.time {
+  font-size: 50px;
+}
+
+.playerinfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  width: 100%;
+}
+
+.player {
+  width: 100%;
+}
+
+#timer {
+  display: none;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
+.textstart {
+  margin-top: 50px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  color: white;
+  word-spacing: 8px;
+}
+.logostr {
+  margin-top: 50px;
+  text-align: left;
+  font-size: 80px;
+  font-weight: 700;
+}
+.pstart {
+  margin-bottom: 25px;
+  font-size: 25px;
+  font-weight: bold;
+}
+li {
+  margin-bottom: 10px; /* Adjust the margin as needed */
+}
+.startpage {
+  background-image: url("https://opengameart.org/sites/default/files/space-2.png");
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+
+#soundicon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  padding-bottom: 50px;
+  font-size: 26px;
+  color: whitesmoke;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+#soundicon:hover {
+  color: #ffa500;
+}
+@keyframes rotateEarth {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.feature-name {
+  color: #ffa500;
+}
+.feature-name1 {
+  color: #00ff7f;
+}
+.info {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.hiden1 {
+  text-align: left;
+  padding: 50px;
+  font-size: 20px;
+}
+#rocket0,
+#rocket1,
+#rocket2,
+#rocket3,
+#rocket4,
+#rocket5 {
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+#rocket0 {
+  color: bisque;
+}
+#rocket1 {
+  color: pink;
+}
+#rocket2 {
+  color: aqua;
+}
+#rocket3 {
+  color: silver;
+}
+#rocket4 {
+  color: #ffa500;
+}
+#rocket5 {
+  color: #00ff7f;
+}
+
+#rocket0:hover {
+  text-shadow: 0 0 15px bisque;
+}
+#rocket1:hover {
+  text-shadow: 0 0 15px pink;
+}
+#rocket2:hover {
+  text-shadow: 0 0 15px aqua;
+}
+#rocket3:hover {
+  text-shadow: 0 0 15px silver;
+}
+#rocket4:hover {
+  text-shadow: 0 0 15px gold;
+}
+#rocket5:hover {
+  text-shadow: 0 0 15px #00ff7f;
+}
+.costum {
+  text-align: center;
+  letter-spacing: 50px;
+  font-size: 80px;
+  line-height: 1.5;
+  padding-left: 50px;
+}
+
+.chose {
+  text-align: center;
+  font-size: 30px;
+  padding-top: 40px;
+}
+.hidden-paragraph {
+  display: none;
+  background-color: rgba(145, 135, 135, 0.8);
+  padding: 20px;
+  border: 1px solid rgba(119, 111, 111, 0.8);
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  color: whitesmoke;
+  word-spacing: 4px;
+}
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.sourcecode{
+  color: white;
+  text-align: center;
+  margin-top: 50px;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+.startgame {
+  border: 2px solid;
+  padding: 5px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.startgame:hover {
+  background-color: #ffa500;
+  color: #001f3f;
+}
+#music {
+  display: none;
+}
+.earth {
+  position: absolute;
+  bottom: 150px;
+  right: 15%;
+  width:  100px;
+  height: auto;
+}
+.astro {
+  position: absolute;
+  top:10%;
+  left: 10%;
+  height: 250px;
+  animation: rotateEarth 60s linear infinite;
+  z-index: 1;
+}
+.starting {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  margin-top: 30px;
+}
+@media (max-width: 768px) {
+  * {
+    overflow: hidden;
+    
+  }
+  
+  body {
+    width: 100vw;
+    overflow: hidden;
+    height: 100vh;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .rightpanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 45%;
+    width: 100%;
+    border-left: none;
+    align-items: center;
+  }
+  .score{
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
+    padding-top: 20%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn {
+    border-radius: 10px;
+    width: 100px;
+    display: inline-block;
+    margin: 5px;
+    font-size: 18px;
+    padding: 5px;
+  }
+
+  .store {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .nav {
+    border-right: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 25%;
+    justify-content: center;
+    align-items: start;
+    padding-top: 50px;
+  }
+
+  .h1info{
+    position: absolute;
+    top: 10px;
+    left: 5px;
+  }
+  .h1reset{
+    position: absolute;
+    top: 10px;
+    right: 5px;
+  }
+  .h1store {
+    display: none;
+  }
+  
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    width: 100%;
+    height: 40%;
+  }
+  
+  .player {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .scoreboard {
+    display: none;
+    margin: 0;
+  }
+  
+  .pointsh2 {
+    padding-right: 30px;
+  }
+  
+  .playerinfo {
+    padding-left: 25px;
+  }
+  .logo {
+    display: none;
+  }
+  .logo2 {
+    display: block;
+    font-size: 40px;
+  }
+  #timer {
+    position: absolute;
+    font-size: 20px;
+    top:45%;
+  }
+  #rocket {
+    font-size: 80px;
+    margin-top: 80px;
+    text-shadow: none;
+  }
+  .price,
+  .pricebonus,
+  .priceauto {
+    font-size: 16px;
+  }
+
+.btn:disabled {
+  background-color: black;
+  color: gray;
+  cursor: not-allowed;
+  border-radius: 10px;
+  width: 100px;
+  display: inline-block;
+  margin: 5px;
+  font-size: 18px;
+  padding: 5px;
+  display: none;
+}
+.startpage{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.logostr{
+  font-size: 50px
+}
+.alien {
+  height: 50px;
+  width: auto;
+}
+.earth {
+display: none;
+}
+.starting {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  margin-top: 30px;
+}
+.startgame {
+  border: 2px solid;
+  padding: 5px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.textstart{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size:16px;
+  padding: 30px;
+}
+.pstart{
+  text-align: center;
+}
+.purchasehistory{
+  display: none;
+}
+.multi,
+.bonus,
+.auto {
+  margin: 0;
+}
+.logo2{
+padding-bottom: 30px;
+}
+.astro {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 150px;
+  animation: rotateEarth 60s linear infinite;
+  z-index: 999;
+}
+.hidden-paragraph {
+  display: none;
+  background-color: rgba(145, 135, 135, 0.8);
+  padding: 10px;
+  border: 1px solid rgba(119, 111, 111, 0.8);
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  color: whitesmoke;
+  word-spacing: 4px;
+  width: 80%; 
+  max-width: 300px; 
+}
+
+.hiden1 {
+  text-align: left;
+  font-size: 16px; 
+  padding: 25px; 
+}
+
+.costum {
+  padding-left: 0px;
+  text-align: center;
+  letter-spacing: 10px;
+  font-size: 40px;
+  line-height: 1.2; 
+}
+
+.chose {
+  text-align: center;
+  font-size: 24px; 
+  padding-top: 20px; 
+}
+
+.close-button {
+  font-size: 24px; 
+  top: 5px; 
+  right: 5px; 
+}
+#soundicon {
+  font-size: 20px;
+  color: whitesmoke;
+  cursor: pointer;
+}
+}
+@media (min-width: 769px) and (max-width: 1084px) {
+  * {
+    overflow: hidden;
+  }
+
+  body {
+    width: 100vw;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .rightpanel {
+    padding-top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 35%;
+    width: 100%;
+    border-left: none;
+    align-items: center;
+  }
+ 
+  .score{
+    padding-left: 5%;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .store {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  .btn{
+    padding-right: 20px;
+  }
+  .nav {
+    border-right: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 25%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .h1info {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+  }
+  .h1reset {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+  }
+  .h1store {
+    display: none;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40%;
+  }
+
+  .player {
+    padding-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+  }
+
+  .scoreboard {
+    display: none;
+    margin: 0;
+  }
+
+  .pointsh2 {
+    padding-right: 30px;
+  }
+
+  .playerinfo {
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    width: 60%;
+  }
+  #playericon{
+    font-size: 20px;
+  }
+  .logo {
+    display: none;
+  }
+  .logo2 {
+    position: relative;
+    display: block;
+  }
+  #timer {
+    width: 100%;
+    font-size: 50px;
+    top: 45%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #rocket {
+    text-shadow: none;
+    margin-top: 100px;
+    font-size: 100px;
+  }
+  .price,
+  .pricebonus,
+  .priceauto {
+    padding-top: 20px;
+    font-size: 20px;
+  }
+
+  .startpage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-evenly;
+  }
+  .logostr {
+    padding: 100px;
+    font-size: 100px;
+  }
+  .alien {
+    height: 50px;
+    width: auto;
+  }
+  .earth {
+    display: none;
+  }
+  .starting {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    margin-top: 15%;
+  }
+  .startgame {
+    border: 2px solid;
+    padding: 5px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .textstart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin: 0;
+  }
+  .pstart {
+    text-align: center;
+  }
+  .purchasehistory {
+    display: none;
+  }
+  .multi,
+  .bonus,
+  .auto {
+  
+    margin: 25px;
+  }
+  .logo2 {
+    font-size: 65px;
+    padding-bottom: 40px;
+  }
+  .astro {
+    position: absolute;
+    top: 5%;
+    left: 60%;
+    height: 250px;
+    animation: rotateEarth 60s linear infinite;
+    z-index: 999;
+  }
+  .hidden-paragraph {
+    padding-top: 50px;
+    display: none;
+    background-color: rgba(145, 135, 135, 0.8);
+    border: 1px solid rgba(119, 111, 111, 0.8);
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    color: whitesmoke;
+    word-spacing: 4px;
+    width: 100%;
+    max-width: 600px;
+  }
+ 
+  .hiden1 {
+    text-align: left;
+    font-size: 20px;
+    padding: 30px;
+  }
+
+  .costum {
+    padding-left: 0px;
+    text-align: center;
+    letter-spacing: 30px;
+    font-size: 100px;
+    line-height: 2;
+  }
+
+  .chose {
+    text-align: center;
+    font-size: 30px;
+    padding-top: 20px;
+  }
+
+  .close-button {
+    font-size: 24px;
+    top: 5px;
+    right: 5px;
+  }
+  #soundicon {
+    font-size: 20px;
+    color: whitesmoke;
+    cursor: pointer;
+  }
+}

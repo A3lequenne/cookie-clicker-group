@@ -7,6 +7,7 @@ Simplified version of the famous game Cookie Clicker made during our training pr
 - Onisim R
 
 This game was developed during the week of October 23 to October 29, 2023.
+
 ## Link to the game
 Link to our game : [Spaceship clicker](https://A3lequenne.github.io/cookie-clicker-group)
 

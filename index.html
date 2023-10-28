@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta name="description" content="Embark on an interstellar adventure with
+    our spaceship clicker game. Click, upgrade, and conquer the universe." / />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="preload"
+      href="https://fonts.cdnfonts.com/css/arcade-classic"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <title>The Spaceship Clicker</title>
+  </head>
+  <body>
+    <audio id="music" src="music.mp3" autoplay loop controls></audio>
+    <div class="startpage" id="startpage">
+      <span class="logostr" id="logo"
+        ><p class="the">The</p>
+        <p class="Space">
+          Sp<i id="logor" class="fa-brands fa-space-awesome logor"></i>ceship
+        </p>
+        <img
+          class="astro"
+          src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d84fc-cdd5-494d-b266-e37cde38b877/da2rzup-2911e20b-1457-4c8b-9649-459a13c4e8c9.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQ4NGZjLWNkZDUtNDk0ZC1iMjY2LWUzN2NkZTM4Yjg3N1wvZGEycnp1cC0yOTExZTIwYi0xNDU3LTRjOGItOTY0OS00NTlhMTNjNGU4YzkuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.hFqV6DhQ0tj7-ljkNliFNDjolUF5zq-oUH79oDmqv8k"
+          alt=""
+        />
+        <img
+          class="earth"
+          src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/feafacae-6edb-4b2b-bbb0-032036c1e090/d2mfiz5-94f4945c-2a79-407d-a6bc-8edf2fe6c00e.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2ZlYWZhY2FlLTZlZGItNGIyYi1iYmIwLTAzMjAzNmMxZTA5MFwvZDJtZml6NS05NGY0OTQ1Yy0yYTc5LTQwN2QtYTZiYy04ZWRmMmZlNmMwMGUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.0fkoi8ysL2KxCIv3RSY_wMFG1z9AhSspUbPYLtkQaV0"
+          alt=""
+        />
+        <p class="clicker">Clicker</p></span
+      >
+
+      <div class="textstart">
+        <p class="pstart">Click your way to cosmic victory!</p>
+        <ul>
+          <li>
+            <span class="feature-name">Multiplier Button:</span> Boost your
+            score with earned credits.
+          </li>
+          <li>
+            <span class="feature-name1">Bonus Button:</span> Double your
+            clicking power for 30 seconds.
+          </li>
+          <li>
+            <span class="feature-name">Auto-Click Button:</span> Automate your
+            cookie collection.
+          </li>
+        </ul>
+
+        <div class="starting">
+          <img
+            class="alien"
+            src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/40619a1d-5e14-4ff4-9239-137c85ec4ac8/dctbxvw-e4bf3371-f296-4c63-acc9-e0754d38b8c7.png/v1/fill/w_50,h_50/suh_dude__f2u__by_marblebust_dctbxvw-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTAiLCJwYXRoIjoiXC9mXC80MDYxOWExZC01ZTE0LTRmZjQtOTIzOS0xMzdjODVlYzRhYzhcL2RjdGJ4dnctZTRiZjMzNzEtZjI5Ni00YzYzLWFjYzktZTA3NTRkMzhiOGM3LnBuZyIsIndpZHRoIjoiPD01MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.PU-bjP1yL5GYoXSIxM3pg-InYunay11Q6pvQBL2i8Ug"
+            alt=""
+          />
+          <p class="startgame" id="startgame">Start Game</p>
+        </div>
+        <audio id="menus" preload="auto" src="menus.mp3"></audio>
+      </div>
+    </div>
+
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="container" id="container">
+      <div class="nav" id="nav">
+        <div class="info" id="info">
+          <div class="inforeset">
+            <div class="buttoninfo" id="buttoninfo">
+              <h1 class="h1info" id="h1info"><i class="fa-solid fa-sliders"></i></h1>
+            </div>
+            <div class="buttonreset" id="buttonreset">
+              <h1 class="h1reset" id="h1reset"> reset</h1>
+            </div>
+          </div>
+          <div class="overlay" id="overlay"></div>
+          <div class="hidden-paragraph" id="gameInfo">
+            <i id="soundicon" class="fa-solid fa-volume-xmark"></i>
+            <ul class="hiden1">
+              <li>
+                <span class="feature-name">Multiplier Button:</span> Boost your
+                score with earned credits.
+              </li>
+              <li>
+                <span class="feature-name1">Bonus Button:</span> Double your
+                clicking power for 30 seconds.
+              </li>
+              <li>
+                <span class="feature-name">Auto-Click Button:</span> Automate
+                your cookie collection.
+              </li>
+              <p class="chose">choose your rocket</p>
+            </ul>
+            <div class="costum">
+              <div class="col1">
+                <i id="rocket0" class="fa-brands fa-space-awesome"></i>
+                <i id="rocket1" class="fa-brands fa-space-awesome"></i>
+                <i id="rocket2" class="fa-brands fa-space-awesome"></i>
+              </div>
+              <div class="col2">
+                <i id="rocket3" class="fa-brands fa-space-awesome"></i>
+                <i id="rocket4" class="fa-brands fa-space-awesome"></i>
+                <i id="rocket5" class="fa-brands fa-space-awesome"></i>
+              </div>
+             
+            </div>
+            <span class="close-button" id="closeButton">&times;</span>
+            <a class="sourcecode" href="https://github.com/A3lequenne/cookie-clicker-group"><p>Source Code</p></a>
+          </div>
+       
+        </div>
+        <span class="logo" id="logo2"
+          ><p class="the">The</p>
+          <p class="Space">
+            Sp<i id="logor2" class="fa-brands fa-space-awesome logor"></i>ceship
+          </p>
+          <p class="clicker">Clicker</p></span
+        >
+        <div class="store" id="store">
+          <h1 class="h1store">store</h1>
+          <div class="upgrades" id="upgrades"></div>
+          <div class="multi">
+            <p class="btn" id="multi" disabled>Multiplier</p>
+            <div class="price">
+              <p id="price">1 credits</p>
+            </div>
+          </div>
+          <div class="bonus">
+            <p class="btn" id="bonus" disabled>Bonus</p>
+            <audio id="bonusSound" src="bonus.mp3"></audio>
+            <div class="pricebonus">
+              <p id="pricebonus">1 credits</p>
+            </div>
+          </div>
+          <div class="auto">
+            <p class="btn" id="auto" disabled>Auto-click</p>
+            <div class="priceauto">
+              <p id="priceauto">1 credits</p>
+            </div>
+          </div>
+        </div>
+        <div></div>
+        <audio id="menus2" preload="auto" src="menus.mp3"></audio>
+      </div>
+      <div class="main" id="main">
+        <div class="time" id="timer"></div>
+        <i id="rocket" class="fa-brands fa-space-awesome"></i>
+      </div>
+      <div class="rightpanel" id="rightpanel">
+        <div class="score" id="score">
+          <div class="scoreboard" id="scoreboard">
+            <h1>Score Board</h1>
+          </div>
+          <div class="player" id="player">
+            <div class="playerinfo" id="playerinfo">
+              <div class="playericon" id="playericon">
+                <i id="playericonfa" class="fa-solid fa-user-astronaut"></i>
+                <h2 class="playericonh2" id="playericonh2">Player 1</h2>
+              </div>
+              <div class="points" id="points">
+                <h2 class="pointsh2" id="pointsh2">0</h2>
+              </div>
+            </div>
+          </div>
+          <div class="logo2" id="logo3">
+            <p class="the">The</p>
+            <p class="Space">
+              Sp<i id="logor3" class="fa-brands fa-space-awesome logor"></i>ceship
+            </p>
+            <p class="clicker">Clicker</p>
+          </div>
+        </div>
+        <div class="purchasehistory" id="purchasehistory">
+          <h2>Purchase History</h2>
+          <div class="purchasehistorydisplay" id="purchasehistorydisplay"></div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
