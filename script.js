@@ -14,6 +14,7 @@
   const gameInfo = document.getElementById("gameInfo");
   const closeButton = document.getElementById("closeButton");
   const purchaseHistoryDisplay = document.getElementById("purchasehistorydisplay");
+  let containerPage = document.getElementById("container");
   
   const soundIcon = document.getElementById("soundicon");
   const music = document.getElementById("music");
@@ -50,6 +51,8 @@
   var delay = 100;
   let color;
 
+  containerPage.style.display = "none";
+
   function saveLocalStorage() {
     localStorage.setItem("score", score);
     localStorage.setItem("clickValue", clickValue);
@@ -63,8 +66,6 @@
     localStorage.setItem("purchageCost", purchaseCost);
     localStorage.setItem("multiplier", multiplier);
     localStorage.setItem("multiplierCost", multiplierCost);
-    localStorage.setItem("purchaseHistory", purchaseHistory);
-    localStorage.setItem("historyText", historyText);
     localStorage.setItem("color", color);
   }
 
@@ -266,7 +267,6 @@
     historyText = "";
     updateScore();
     updateMultiplierButton();
-    displayPurchaseHistory();
     price.innerText = multiplierCost + " credits";
     pricebonus.innerText = bonusPriceValue + " credits";
     priceAuto.innerText = autoPriceValue + " credits";
@@ -294,12 +294,12 @@
     if (timeLeft > 0) {
       bonusAfterReload();
     }
-    displayPurchaseHistory();
     price.innerText = multiplierCost + " credits";
     pricebonus.innerText = bonusPriceValue + " credits";
     priceAuto.innerText = autoPriceValue + " credits";
     if (score > 0) {
-        document.querySelector(".startpage").style.display = "none";
+      containerPage.style.display = "flex";
+      document.querySelector(".startpage").style.display = "none";
     }
     color = localStorage.getItem("color");
     mainRocket.style.color = color;
@@ -336,6 +336,7 @@
 
   document.getElementById("startgame").addEventListener("click", function () {
     document.querySelector(".startpage").style.display = "none";
+    containerPage.style.display = "flex";
   });
 
   startgame.addEventListener("mouseenter", function () {
