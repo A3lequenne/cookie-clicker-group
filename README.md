@@ -36,4 +36,4 @@ We also thought about some features that we didnt have time to implement. For ex
 Clone our project than use Liveserver to be able to see the development as it's done.
 
 ## Note
-We could and should have use Vite + JSdoc/TS on this project, but since we didnt think about it in the beginning of it, it seemed counter-productive to add a tool to help us develop and the end of the development. We'll definitely use those tools on next projects
+We could and should have used Vite + JSdoc/TS on this project, but since we didnt think about it in the beginning of it, it seemed counter-productive to add a tool to help us develop and the end of the development. We'll definitely use those tools on next projects
