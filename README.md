@@ -5,6 +5,7 @@ Simplified version of the famous game Cookie Clicker made during our training pr
 - Clément L
 - Ravi S
 - Onisim R
+
 This game was developed during the week of October 23 to October 29, 2023.
 
 ## Link to the game
