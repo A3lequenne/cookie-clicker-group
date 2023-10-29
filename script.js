@@ -15,11 +15,12 @@
   const closeButton = document.getElementById("closeButton");
   const purchaseHistoryDisplay = document.getElementById("purchasehistorydisplay");
   let containerPage = document.getElementById("container");
-  
   const soundIcon = document.getElementById("soundicon");
   const music = document.getElementById("music");
   const rocketIcons = document.querySelectorAll(".costum i");
   const mainRocket = document.getElementById("rocket");
+  var menus = document.getElementById("menus");
+  var startgame = document.getElementById("startgame");
 
   // General
   let score;
@@ -46,8 +47,6 @@
   let historyText = "";
 
   // Sound + Landing Page
-  var menus = document.getElementById("menus");
-  var startgame = document.getElementById("startgame");
   var delay = 100;
   let color;
 
@@ -75,7 +74,6 @@
 
   function clickOnRocket() {
     score += clickValue * multiplier;
-    //console.log(`score: ${score} \nclickValue: ${clickValue} \nmultiplier: ${multiplier} \nincrement: ${clickValue * multiplier}`);
     updateScore();
 
     if (score >= purchaseCost) {
@@ -97,7 +95,6 @@
       }
     }
     purchaseHistoryDisplay.innerText = historyText;
-    console.log(purchaseHistory);
   }
 
   function getPurchaseHistory(nameButton, cost) {
@@ -180,18 +177,21 @@
   }
 
   function buyAutoClick() {
-    if (autoClickSpeed > 500) {
-      if (score >= autoPriceValue && score != 0) {
-        score -= autoPriceValue;
-        getPurchaseHistory("Auto-click", autoPriceValue);
-        autoPriceValue *= 2;
-        updateScore();
-        autoActive = true;
-      }
+    if (score >= autoPriceValue && score != 0 && autoClickSpeed > 500) {
+      score -= autoPriceValue;
+      getPurchaseHistory("Auto-click", autoPriceValue);
+      autoPriceValue *= 2;
+      updateScore();
+      autoActive = true;
       autoClickSpeed -= 500;
     }
 
-    priceAuto.innerText = autoPriceValue + " credits";
+    auto.innerText = `Auto-click / ${(autoClickSpeed)/ 1000} secs`;
+
+    priceAuto.innerText = autoPriceValue + ` credits`;
+    if (autoClickSpeed == 500) {
+      priceAuto.innerText = "Max reached";
+    }
 
     if (autoActive == true) {
       clearInterval(autoInterval);
@@ -210,10 +210,12 @@
     const animationDuration = `${Math.random() * 3 + 2}s`;
     star.style.animation = `moveStar ${animationDuration} linear infinite`;
 
-    star.addEventListener("animationiteration", () => {
+    function createBackground() {
       starsContainer.removeChild(star);
       createStarOutsideView();
-    });
+    }
+
+    star.addEventListener("animationiteration", createBackground);
 
     starsContainer.appendChild(star);
   }
@@ -227,13 +229,11 @@
 
   createStarsOutsideView(100);
 
-  // Add a click event listener to the button
   function infoButtonClick() {
     overlay.style.display = "block";
     gameInfo.style.display = "block";
   }
 
-  // Add a click event listener to the overlay (to close the modal)
   function infoOverlay() {
     overlay.style.display = "none";
     gameInfo.style.display = "none";
@@ -258,7 +258,7 @@
     autoPriceValue = 1;
     clearInterval(autoInterval);
     autoInterval = false;
-    autoClickSpeed = 5000;
+    autoClickSpeed = 5500;
     autoActive = false;
     purchaseCost = 0;
     multiplier = 1;
@@ -267,9 +267,11 @@
     historyText = "";
     updateScore();
     updateMultiplierButton();
+    displayPurchaseHistory();
     price.innerText = multiplierCost + " credits";
     pricebonus.innerText = bonusPriceValue + " credits";
     priceAuto.innerText = autoPriceValue + " credits";
+    auto.innerText = "Auto-click";
   }
 
   function getLocalStorage() {
@@ -280,7 +282,7 @@
     timeLeft = parseInt(localStorage.getItem("timeLeft")) || 0;
     autoPriceValue = parseInt(localStorage.getItem("autoPriceValue")) || 1;
     autoInterval = localStorage.getItem("autoInterval") || false;
-    autoClickSpeed = parseInt(localStorage.getItem("autoClickSpeed")) || 5000;
+    autoClickSpeed = parseInt(localStorage.getItem("autoClickSpeed")) || 5500;
     autoActive = localStorage.getItem("autoActive") || false;
     if (autoActive == "true") {
       clearInterval(autoInterval);
@@ -334,61 +336,23 @@
 
   updateButtonStylesInBackground(bonus, multi, auto);
 
-  document.getElementById("startgame").addEventListener("click", function () {
+  function startGame() {
     document.querySelector(".startpage").style.display = "none";
     containerPage.style.display = "flex";
-  });
+  }
 
-  startgame.addEventListener("mouseenter", function () {
+  function playSound() {
     setTimeout(function () {
       menus.currentTime = 0;
       menus.play();
     }, delay);
-  });
+  }
 
-  startgame.addEventListener("mouseleave", function () {
+  function stopSound() {
     setTimeout(function () {
       menus.pause();
     }, delay);
-  });
-  multi.addEventListener("mouseenter", function () {
-    setTimeout(function () {
-      menus.currentTime = 0;
-      menus.play();
-    }, delay);
-  });
-
-  bonus.addEventListener("mouseenter", function () {
-    setTimeout(function () {
-      menus.currentTime = 0;
-      menus.play();
-    }, delay);
-  });
-
-  auto.addEventListener("mouseenter", function () {
-    setTimeout(function () {
-      menus.currentTime = 0;
-      menus.play();
-    }, delay);
-  });
-
-  multi.addEventListener("mouseleave", function () {
-    setTimeout(function () {
-      menus.pause();
-    }, delay);
-  });
-
-  bonus.addEventListener("mouseleave", function () {
-    setTimeout(function () {
-      menus.pause();
-    }, delay);
-  });
-
-  auto.addEventListener("mouseleave", function () {
-    setTimeout(function () {
-      menus.pause();
-    }, delay);
-  });
+  }
 
   music.volume = 0.1;
 
@@ -396,7 +360,7 @@
     soundIcon.classList.add("fa-volume-mute");
   }
 
-  soundIcon.addEventListener("click", function () {
+  function muteMusic() {
     if (music.muted) {
       music.muted = false;
       soundIcon.classList.remove("fa-volume-mute");
@@ -405,18 +369,19 @@
       soundIcon.classList.add("fa-volume-mute");
     }
     localStorage.setItem("soundMuted", music.muted);
-  });
+  }
 
-  rocketIcons.forEach((rocketIcon) => {
-    rocketIcon.addEventListener("click", () => {
-      color = getComputedStyle(rocketIcon).color;
-      localStorage.setItem("color", color);
-      mainRocket.style.color = color;
-    });
-  });
+  function chooseColor(rocketIcon) {
+    color = getComputedStyle(rocketIcon).color;
+    localStorage.setItem("color", color);
+    mainRocket.style.color = color;
+    closeInfoPanel();
+  }
 
   window.addEventListener("load", getLocalStorage);
   window.addEventListener("beforeunload", saveLocalStorage);
+
+  startgame.addEventListener("click", startGame);
 
   rocket.addEventListener("click", clickOnRocket);
 
@@ -429,16 +394,18 @@
   infoButton.addEventListener("click", infoButtonClick);
   overlay.addEventListener("click", infoOverlay);
   closeButton.addEventListener("click", closeInfoPanel);
-
-  //I add this code is for when u chose a custom color on your rocket that the hidden pannel on info it's closing automatic after u click on ur selected color.
- 
+  soundIcon.addEventListener("click", muteMusic);
   rocketIcons.forEach((rocketIcon) => {
-    rocketIcon.addEventListener("click", () => {
-      color = getComputedStyle(rocketIcon).color;
-      localStorage.setItem("color", color);
-      mainRocket.style.color = color;
-      closeInfoPanel(); 
-    });
+    rocketIcon.addEventListener("click", () => chooseColor(rocketIcon));
   });
+
+  startgame.addEventListener("mouseenter", playSound);
+  startgame.addEventListener("mouseleave", stopSound);
+  multi.addEventListener("mouseenter", playSound);
+  multi.addEventListener("mouseleave", stopSound);
+  bonus.addEventListener("mouseenter", playSound);
+  bonus.addEventListener("mouseleave", stopSound);
+  auto.addEventListener("mouseenter", playSound);
+  auto.addEventListener("mouseleave", stopSound);
 
 })();
