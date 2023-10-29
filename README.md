@@ -28,6 +28,7 @@ Link to our game : [Spaceship clicker](https://A3lequenne.github.io/cookie-click
 We also thought about some features that we didnt have time to implement. For example:
 - Leaderboard
 - More personalization of the player (name changer, possibly skins to buy with points and not for free)
+- The purchase history isnt displayed after a reload since the localStorage stores everything as a string and we didnt get time to do "a parsing function" to display it.
 
 ## Technologies used
 - Html5
