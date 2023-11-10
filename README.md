@@ -8,6 +8,9 @@ Simplified version of the famous game Cookie Clicker made during our training pr
 
 This game was developed during the week of October 23 to October 29, 2023.
 
+## Preview
+![Preview])(./preview_CookieClicker.png)
+
 ## Link to the game
 Link to our game : [Spaceship clicker](https://A3lequenne.github.io/cookie-clicker-group)
 
@@ -40,3 +43,6 @@ Clone our project than use Liveserver to be able to see the development as it's 
 
 ## Note
 We could and should have used Vite + JSdoc/TS on this project, but since we didnt think about it in the beginning of it, it seemed counter-productive to add a tool to help us develop and the end of the development. We'll definitely use those tools on next projects
+
+## Copyright
+All rights reserved - 29/10/23
